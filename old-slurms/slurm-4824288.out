@@ -1,0 +1,396 @@
+Starting job 4824288 on c7-1 at Wed Jan 12 23:11:49 CET 2022
+
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+submission directory: /cluster/home/pmhalvor/nlp/msc/RACL
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 1543736
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 20971520
+open files                      (-n) 131072
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1543736
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+Currently Loaded Modules:
+  1) StdEnv                                        (S)
+  2) GCCcore/8.2.0
+  3) zlib/1.2.11-GCCcore-8.2.0                     (H)
+  4) binutils/2.31.1-GCCcore-8.2.0                 (H)
+  5) GCC/8.2.0-2.31.1
+  6) CUDA/10.1.105-GCC-8.2.0-2.31.1
+  7) gcccuda/2019a
+  8) NCCL/2.4.8-gcccuda-2019a
+  9) hpcx/2.5
+ 10) OpenMPI/3.1.3-gcccuda-2019a
+ 11) OpenBLAS/0.3.5-GCC-8.2.0-2.31.1
+ 12) gompic/2019a
+ 13) FFTW/3.3.8-gompic-2019a
+ 14) ScaLAPACK/2.0.2-gompic-2019a-OpenBLAS-0.3.5
+ 15) fosscuda/2019a
+ 16) bzip2/1.0.6-GCCcore-8.2.0                     (H)
+ 17) ncurses/6.1-GCCcore-8.2.0                     (H)
+ 18) libreadline/8.0-GCCcore-8.2.0                 (H)
+ 19) XZ/5.2.4-GCCcore-8.2.0                        (H)
+ 20) GMP/6.1.2-GCCcore-8.2.0                       (H)
+ 21) libffi/3.2.1-GCCcore-8.2.0                    (H)
+ 22) Python/3.7.2-GCCcore-8.2.0
+ 23) SciPy-bundle/2019.03-fosscuda-2019a
+ 24) Szip/2.1.1-GCCcore-8.2.0                      (H)
+ 25) HDF5/1.10.5-gompic-2019a
+ 26) h5py/2.9.0-fosscuda-2019a
+ 27) cuDNN/7.6.4.38-gcccuda-2019a
+ 28) TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2
+
+  Where:
+   H:  Hidden Module
+   S:  Module is Sticky, requires --force to unload or purge
+
+ 
+
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[54966,1],0] (PID 20182)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+-----------------------------------Parameters-----------------------------------
+>>> model: racl-bert
+>>> task: norec_fine
+>>> batch_size: 8
+>>> learning_rate: 0.0001
+>>> kp1: 0.5
+>>> kp2: 0.5
+>>> reg_scale: 1e-05
+>>> filter_num: 512
+>>> class_num: 3
+>>> load: 0
+>>> max_sentence_len: 100
+>>> n_iter: 15
+>>> kernel_size: 3
+>>> hop_num: 3
+>>> warmup_iter: 10
+>>> emb_dim: 768
+>>> data_path: data/norec_fine/
+>>> train_path: data/norec_fine/train/
+>>> test_path: data/norec_fine/test/
+>>> dev_path: data/norec_fine/dev/
+
+
+WARNING:tensorflow:From /cluster/software/TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /cluster/home/pmhalvor/nlp/msc/RACL/bert_modeling.py:652: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:From /cluster/home/pmhalvor/nlp/msc/RACL/model_bert.py:103: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv1d instead.
+WARNING:tensorflow:From /cluster/home/pmhalvor/nlp/msc/RACL/utils.py:344: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+>>> total parameter: 123148827
+WARNING:tensorflow:From /cluster/home/pmhalvor/nlp/msc/RACL/model_bert.py:197: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+
+Future major versions of TensorFlow will allow gradients to flow
+into the labels input on backprop by default.
+
+See `tf.nn.softmax_cross_entropy_with_logits_v2`.
+
+WARNING:tensorflow:From /cluster/software/TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /cluster/software/TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+para 0/235 <tf.Variable 'bert/embeddings/word_embeddings:0' shape=(30101, 768) dtype=float32_ref>
+para 1/235 <tf.Variable 'bert/embeddings/token_type_embeddings:0' shape=(2, 768) dtype=float32_ref>
+para 2/235 <tf.Variable 'bert/embeddings/position_embeddings:0' shape=(512, 768) dtype=float32_ref>
+para 3/235 <tf.Variable 'bert/embeddings/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 4/235 <tf.Variable 'bert/embeddings/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 5/235 <tf.Variable 'bert/encoder/layer_0/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 6/235 <tf.Variable 'bert/encoder/layer_0/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 7/235 <tf.Variable 'bert/encoder/layer_0/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 8/235 <tf.Variable 'bert/encoder/layer_0/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 9/235 <tf.Variable 'bert/encoder/layer_0/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 10/235 <tf.Variable 'bert/encoder/layer_0/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 11/235 <tf.Variable 'bert/encoder/layer_0/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 12/235 <tf.Variable 'bert/encoder/layer_0/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 13/235 <tf.Variable 'bert/encoder/layer_0/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 14/235 <tf.Variable 'bert/encoder/layer_0/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 15/235 <tf.Variable 'bert/encoder/layer_0/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 16/235 <tf.Variable 'bert/encoder/layer_0/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 17/235 <tf.Variable 'bert/encoder/layer_0/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 18/235 <tf.Variable 'bert/encoder/layer_0/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 19/235 <tf.Variable 'bert/encoder/layer_0/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 20/235 <tf.Variable 'bert/encoder/layer_0/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 21/235 <tf.Variable 'bert/encoder/layer_1/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 22/235 <tf.Variable 'bert/encoder/layer_1/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 23/235 <tf.Variable 'bert/encoder/layer_1/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 24/235 <tf.Variable 'bert/encoder/layer_1/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 25/235 <tf.Variable 'bert/encoder/layer_1/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 26/235 <tf.Variable 'bert/encoder/layer_1/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 27/235 <tf.Variable 'bert/encoder/layer_1/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 28/235 <tf.Variable 'bert/encoder/layer_1/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 29/235 <tf.Variable 'bert/encoder/layer_1/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 30/235 <tf.Variable 'bert/encoder/layer_1/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 31/235 <tf.Variable 'bert/encoder/layer_1/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 32/235 <tf.Variable 'bert/encoder/layer_1/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 33/235 <tf.Variable 'bert/encoder/layer_1/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 34/235 <tf.Variable 'bert/encoder/layer_1/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 35/235 <tf.Variable 'bert/encoder/layer_1/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 36/235 <tf.Variable 'bert/encoder/layer_1/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 37/235 <tf.Variable 'bert/encoder/layer_2/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 38/235 <tf.Variable 'bert/encoder/layer_2/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 39/235 <tf.Variable 'bert/encoder/layer_2/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 40/235 <tf.Variable 'bert/encoder/layer_2/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 41/235 <tf.Variable 'bert/encoder/layer_2/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 42/235 <tf.Variable 'bert/encoder/layer_2/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 43/235 <tf.Variable 'bert/encoder/layer_2/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 44/235 <tf.Variable 'bert/encoder/layer_2/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 45/235 <tf.Variable 'bert/encoder/layer_2/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 46/235 <tf.Variable 'bert/encoder/layer_2/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 47/235 <tf.Variable 'bert/encoder/layer_2/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 48/235 <tf.Variable 'bert/encoder/layer_2/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 49/235 <tf.Variable 'bert/encoder/layer_2/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 50/235 <tf.Variable 'bert/encoder/layer_2/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 51/235 <tf.Variable 'bert/encoder/layer_2/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 52/235 <tf.Variable 'bert/encoder/layer_2/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 53/235 <tf.Variable 'bert/encoder/layer_3/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 54/235 <tf.Variable 'bert/encoder/layer_3/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 55/235 <tf.Variable 'bert/encoder/layer_3/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 56/235 <tf.Variable 'bert/encoder/layer_3/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 57/235 <tf.Variable 'bert/encoder/layer_3/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 58/235 <tf.Variable 'bert/encoder/layer_3/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 59/235 <tf.Variable 'bert/encoder/layer_3/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 60/235 <tf.Variable 'bert/encoder/layer_3/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 61/235 <tf.Variable 'bert/encoder/layer_3/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 62/235 <tf.Variable 'bert/encoder/layer_3/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 63/235 <tf.Variable 'bert/encoder/layer_3/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 64/235 <tf.Variable 'bert/encoder/layer_3/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 65/235 <tf.Variable 'bert/encoder/layer_3/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 66/235 <tf.Variable 'bert/encoder/layer_3/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 67/235 <tf.Variable 'bert/encoder/layer_3/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 68/235 <tf.Variable 'bert/encoder/layer_3/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 69/235 <tf.Variable 'bert/encoder/layer_4/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 70/235 <tf.Variable 'bert/encoder/layer_4/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 71/235 <tf.Variable 'bert/encoder/layer_4/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 72/235 <tf.Variable 'bert/encoder/layer_4/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 73/235 <tf.Variable 'bert/encoder/layer_4/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 74/235 <tf.Variable 'bert/encoder/layer_4/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 75/235 <tf.Variable 'bert/encoder/layer_4/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 76/235 <tf.Variable 'bert/encoder/layer_4/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 77/235 <tf.Variable 'bert/encoder/layer_4/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 78/235 <tf.Variable 'bert/encoder/layer_4/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 79/235 <tf.Variable 'bert/encoder/layer_4/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 80/235 <tf.Variable 'bert/encoder/layer_4/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 81/235 <tf.Variable 'bert/encoder/layer_4/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 82/235 <tf.Variable 'bert/encoder/layer_4/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 83/235 <tf.Variable 'bert/encoder/layer_4/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 84/235 <tf.Variable 'bert/encoder/layer_4/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 85/235 <tf.Variable 'bert/encoder/layer_5/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 86/235 <tf.Variable 'bert/encoder/layer_5/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 87/235 <tf.Variable 'bert/encoder/layer_5/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 88/235 <tf.Variable 'bert/encoder/layer_5/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 89/235 <tf.Variable 'bert/encoder/layer_5/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 90/235 <tf.Variable 'bert/encoder/layer_5/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 91/235 <tf.Variable 'bert/encoder/layer_5/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 92/235 <tf.Variable 'bert/encoder/layer_5/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 93/235 <tf.Variable 'bert/encoder/layer_5/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 94/235 <tf.Variable 'bert/encoder/layer_5/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 95/235 <tf.Variable 'bert/encoder/layer_5/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 96/235 <tf.Variable 'bert/encoder/layer_5/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 97/235 <tf.Variable 'bert/encoder/layer_5/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 98/235 <tf.Variable 'bert/encoder/layer_5/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 99/235 <tf.Variable 'bert/encoder/layer_5/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 100/235 <tf.Variable 'bert/encoder/layer_5/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 101/235 <tf.Variable 'bert/encoder/layer_6/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 102/235 <tf.Variable 'bert/encoder/layer_6/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 103/235 <tf.Variable 'bert/encoder/layer_6/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 104/235 <tf.Variable 'bert/encoder/layer_6/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 105/235 <tf.Variable 'bert/encoder/layer_6/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 106/235 <tf.Variable 'bert/encoder/layer_6/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 107/235 <tf.Variable 'bert/encoder/layer_6/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 108/235 <tf.Variable 'bert/encoder/layer_6/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 109/235 <tf.Variable 'bert/encoder/layer_6/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 110/235 <tf.Variable 'bert/encoder/layer_6/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 111/235 <tf.Variable 'bert/encoder/layer_6/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 112/235 <tf.Variable 'bert/encoder/layer_6/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 113/235 <tf.Variable 'bert/encoder/layer_6/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 114/235 <tf.Variable 'bert/encoder/layer_6/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 115/235 <tf.Variable 'bert/encoder/layer_6/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 116/235 <tf.Variable 'bert/encoder/layer_6/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 117/235 <tf.Variable 'bert/encoder/layer_7/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 118/235 <tf.Variable 'bert/encoder/layer_7/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 119/235 <tf.Variable 'bert/encoder/layer_7/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 120/235 <tf.Variable 'bert/encoder/layer_7/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 121/235 <tf.Variable 'bert/encoder/layer_7/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 122/235 <tf.Variable 'bert/encoder/layer_7/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 123/235 <tf.Variable 'bert/encoder/layer_7/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 124/235 <tf.Variable 'bert/encoder/layer_7/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 125/235 <tf.Variable 'bert/encoder/layer_7/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 126/235 <tf.Variable 'bert/encoder/layer_7/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 127/235 <tf.Variable 'bert/encoder/layer_7/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 128/235 <tf.Variable 'bert/encoder/layer_7/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 129/235 <tf.Variable 'bert/encoder/layer_7/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 130/235 <tf.Variable 'bert/encoder/layer_7/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 131/235 <tf.Variable 'bert/encoder/layer_7/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 132/235 <tf.Variable 'bert/encoder/layer_7/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 133/235 <tf.Variable 'bert/encoder/layer_8/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 134/235 <tf.Variable 'bert/encoder/layer_8/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 135/235 <tf.Variable 'bert/encoder/layer_8/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 136/235 <tf.Variable 'bert/encoder/layer_8/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 137/235 <tf.Variable 'bert/encoder/layer_8/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 138/235 <tf.Variable 'bert/encoder/layer_8/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 139/235 <tf.Variable 'bert/encoder/layer_8/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 140/235 <tf.Variable 'bert/encoder/layer_8/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 141/235 <tf.Variable 'bert/encoder/layer_8/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 142/235 <tf.Variable 'bert/encoder/layer_8/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 143/235 <tf.Variable 'bert/encoder/layer_8/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 144/235 <tf.Variable 'bert/encoder/layer_8/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 145/235 <tf.Variable 'bert/encoder/layer_8/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 146/235 <tf.Variable 'bert/encoder/layer_8/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 147/235 <tf.Variable 'bert/encoder/layer_8/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 148/235 <tf.Variable 'bert/encoder/layer_8/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 149/235 <tf.Variable 'bert/encoder/layer_9/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 150/235 <tf.Variable 'bert/encoder/layer_9/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 151/235 <tf.Variable 'bert/encoder/layer_9/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 152/235 <tf.Variable 'bert/encoder/layer_9/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 153/235 <tf.Variable 'bert/encoder/layer_9/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 154/235 <tf.Variable 'bert/encoder/layer_9/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 155/235 <tf.Variable 'bert/encoder/layer_9/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 156/235 <tf.Variable 'bert/encoder/layer_9/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 157/235 <tf.Variable 'bert/encoder/layer_9/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 158/235 <tf.Variable 'bert/encoder/layer_9/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 159/235 <tf.Variable 'bert/encoder/layer_9/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 160/235 <tf.Variable 'bert/encoder/layer_9/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 161/235 <tf.Variable 'bert/encoder/layer_9/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 162/235 <tf.Variable 'bert/encoder/layer_9/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 163/235 <tf.Variable 'bert/encoder/layer_9/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 164/235 <tf.Variable 'bert/encoder/layer_9/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 165/235 <tf.Variable 'bert/encoder/layer_10/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 166/235 <tf.Variable 'bert/encoder/layer_10/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 167/235 <tf.Variable 'bert/encoder/layer_10/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 168/235 <tf.Variable 'bert/encoder/layer_10/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 169/235 <tf.Variable 'bert/encoder/layer_10/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 170/235 <tf.Variable 'bert/encoder/layer_10/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 171/235 <tf.Variable 'bert/encoder/layer_10/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 172/235 <tf.Variable 'bert/encoder/layer_10/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 173/235 <tf.Variable 'bert/encoder/layer_10/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 174/235 <tf.Variable 'bert/encoder/layer_10/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 175/235 <tf.Variable 'bert/encoder/layer_10/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 176/235 <tf.Variable 'bert/encoder/layer_10/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 177/235 <tf.Variable 'bert/encoder/layer_10/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 178/235 <tf.Variable 'bert/encoder/layer_10/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 179/235 <tf.Variable 'bert/encoder/layer_10/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 180/235 <tf.Variable 'bert/encoder/layer_10/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 181/235 <tf.Variable 'bert/encoder/layer_11/attention/self/query/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 182/235 <tf.Variable 'bert/encoder/layer_11/attention/self/query/bias:0' shape=(768,) dtype=float32_ref>
+para 183/235 <tf.Variable 'bert/encoder/layer_11/attention/self/key/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 184/235 <tf.Variable 'bert/encoder/layer_11/attention/self/key/bias:0' shape=(768,) dtype=float32_ref>
+para 185/235 <tf.Variable 'bert/encoder/layer_11/attention/self/value/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 186/235 <tf.Variable 'bert/encoder/layer_11/attention/self/value/bias:0' shape=(768,) dtype=float32_ref>
+para 187/235 <tf.Variable 'bert/encoder/layer_11/attention/output/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 188/235 <tf.Variable 'bert/encoder/layer_11/attention/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 189/235 <tf.Variable 'bert/encoder/layer_11/attention/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 190/235 <tf.Variable 'bert/encoder/layer_11/attention/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 191/235 <tf.Variable 'bert/encoder/layer_11/intermediate/dense/kernel:0' shape=(768, 3072) dtype=float32_ref>
+para 192/235 <tf.Variable 'bert/encoder/layer_11/intermediate/dense/bias:0' shape=(3072,) dtype=float32_ref>
+para 193/235 <tf.Variable 'bert/encoder/layer_11/output/dense/kernel:0' shape=(3072, 768) dtype=float32_ref>
+para 194/235 <tf.Variable 'bert/encoder/layer_11/output/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 195/235 <tf.Variable 'bert/encoder/layer_11/output/LayerNorm/beta:0' shape=(768,) dtype=float32_ref>
+para 196/235 <tf.Variable 'bert/encoder/layer_11/output/LayerNorm/gamma:0' shape=(768,) dtype=float32_ref>
+para 197/235 <tf.Variable 'bert/pooler/dense/kernel:0' shape=(768, 768) dtype=float32_ref>
+para 198/235 <tf.Variable 'bert/pooler/dense/bias:0' shape=(768,) dtype=float32_ref>
+para 199/235 <tf.Variable 'layers_0/aspect_conv/kernel:0' shape=(3, 768, 512) dtype=float32_ref>
+para 200/235 <tf.Variable 'layers_0/aspect_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 201/235 <tf.Variable 'layers_0/opinion_conv/kernel:0' shape=(3, 768, 512) dtype=float32_ref>
+para 202/235 <tf.Variable 'layers_0/opinion_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 203/235 <tf.Variable 'layers_0/aspect_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 204/235 <tf.Variable 'layers_0/aspect_p/biases:0' shape=(3,) dtype=float32_ref>
+para 205/235 <tf.Variable 'layers_0/opinion_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 206/235 <tf.Variable 'layers_0/opinion_p/biases:0' shape=(3,) dtype=float32_ref>
+para 207/235 <tf.Variable 'layers_0/context_conv/kernel:0' shape=(3, 768, 768) dtype=float32_ref>
+para 208/235 <tf.Variable 'layers_0/context_conv/bias:0' shape=(768,) dtype=float32_ref>
+para 209/235 <tf.Variable 'layers_0/senti_p/weights:0' shape=(768, 3) dtype=float32_ref>
+para 210/235 <tf.Variable 'layers_0/senti_p/biases:0' shape=(3,) dtype=float32_ref>
+para 211/235 <tf.Variable 'layers_1/aspect_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 212/235 <tf.Variable 'layers_1/aspect_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 213/235 <tf.Variable 'layers_1/opinion_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 214/235 <tf.Variable 'layers_1/opinion_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 215/235 <tf.Variable 'layers_1/aspect_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 216/235 <tf.Variable 'layers_1/aspect_p/biases:0' shape=(3,) dtype=float32_ref>
+para 217/235 <tf.Variable 'layers_1/opinion_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 218/235 <tf.Variable 'layers_1/opinion_p/biases:0' shape=(3,) dtype=float32_ref>
+para 219/235 <tf.Variable 'layers_1/context_conv/kernel:0' shape=(3, 768, 768) dtype=float32_ref>
+para 220/235 <tf.Variable 'layers_1/context_conv/bias:0' shape=(768,) dtype=float32_ref>
+para 221/235 <tf.Variable 'layers_1/senti_p/weights:0' shape=(768, 3) dtype=float32_ref>
+para 222/235 <tf.Variable 'layers_1/senti_p/biases:0' shape=(3,) dtype=float32_ref>
+para 223/235 <tf.Variable 'layers_2/aspect_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 224/235 <tf.Variable 'layers_2/aspect_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 225/235 <tf.Variable 'layers_2/opinion_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 226/235 <tf.Variable 'layers_2/opinion_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 227/235 <tf.Variable 'layers_2/aspect_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 228/235 <tf.Variable 'layers_2/aspect_p/biases:0' shape=(3,) dtype=float32_ref>
+para 229/235 <tf.Variable 'layers_2/opinion_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 230/235 <tf.Variable 'layers_2/opinion_p/biases:0' shape=(3,) dtype=float32_ref>
+para 231/235 <tf.Variable 'layers_2/context_conv/kernel:0' shape=(3, 768, 768) dtype=float32_ref>
+para 232/235 <tf.Variable 'layers_2/context_conv/bias:0' shape=(768,) dtype=float32_ref>
+para 233/235 <tf.Variable 'layers_2/senti_p/weights:0' shape=(768, 3) dtype=float32_ref>
+para 234/235 <tf.Variable 'layers_2/senti_p/biases:0' shape=(3,) dtype=float32_ref>
+Traceback (most recent call last):
+  File "train_racl_bert.py", line 61, in <module>
+    tf.app.run()
+  File "/cluster/software/TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2/lib/python3.7/site-packages/tensorflow/python/platform/app.py", line 125, in run
+    _sys.exit(main(argv))
+  File "train_racl_bert.py", line 56, in main
+    model.run()
+  File "/cluster/home/pmhalvor/nlp/msc/RACL/model_bert.py", line 227, in run
+    mine_op = mine_opt.apply_gradients(zip(mine_grads, mine_vars), global_step=global_step)
+  File "/cluster/software/TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2/lib/python3.7/site-packages/tensorflow/python/training/optimizer.py", line 572, in apply_gradients
+    raise ValueError("No variables provided.")
+ValueError: No variables provided.
+
+Task and CPU usage stats:
+       JobID    JobName  AllocCPUS   NTasks     MinCPU MinCPUTask     AveCPU    Elapsed ExitCode 
+------------ ---------- ---------- -------- ---------- ---------- ---------- ---------- -------- 
+4824288      pmhalvor/+          2                                             00:00:41      1:0 
+4824288.bat+      batch          2        1   00:00:33          0   00:00:33   00:00:41      1:0 
+4824288.ext+     extern          2        1   00:00:00          0   00:00:00   00:00:41      0:0 
+
+Memory usage stats:
+       JobID     MaxRSS MaxRSSTask     AveRSS MaxPages   MaxPagesTask   AvePages 
+------------ ---------- ---------- ---------- -------- -------------- ---------- 
+4824288                                                                          
+4824288.bat+    260120K          0    260120K        0              0          0 
+4824288.ext+          0          0          0        0              0          0 
+
+Disk usage stats:
+       JobID  MaxDiskRead MaxDiskReadTask    AveDiskRead MaxDiskWrite MaxDiskWriteTask   AveDiskWrite 
+------------ ------------ --------------- -------------- ------------ ---------------- -------------- 
+4824288                                                                                               
+4824288.bat+       12.87M               0         12.87M        0.06M                0          0.06M 
+4824288.ext+        0.00M               0          0.00M            0                0              0 
+
+Job 4824288 completed at Wed Jan 12 23:12:30 CET 2022

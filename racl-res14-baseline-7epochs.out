@@ -1,0 +1,1576 @@
+Starting job 4805844 on c7-3 at Wed Jan 12 13:00:00 CET 2022
+
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+submission directory: /cluster/home/pmhalvor/nlp/msc/RACL
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 1543736
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 20971520
+open files                      (-n) 131072
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1543736
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+Currently Loaded Modules:
+  1) StdEnv                                        (S)
+  2) GCCcore/8.2.0
+  3) zlib/1.2.11-GCCcore-8.2.0                     (H)
+  4) binutils/2.31.1-GCCcore-8.2.0                 (H)
+  5) GCC/8.2.0-2.31.1
+  6) CUDA/10.1.105-GCC-8.2.0-2.31.1
+  7) gcccuda/2019a
+  8) NCCL/2.4.8-gcccuda-2019a
+  9) hpcx/2.5
+ 10) OpenMPI/3.1.3-gcccuda-2019a
+ 11) OpenBLAS/0.3.5-GCC-8.2.0-2.31.1
+ 12) gompic/2019a
+ 13) FFTW/3.3.8-gompic-2019a
+ 14) ScaLAPACK/2.0.2-gompic-2019a-OpenBLAS-0.3.5
+ 15) fosscuda/2019a
+ 16) bzip2/1.0.6-GCCcore-8.2.0                     (H)
+ 17) ncurses/6.1-GCCcore-8.2.0                     (H)
+ 18) libreadline/8.0-GCCcore-8.2.0                 (H)
+ 19) XZ/5.2.4-GCCcore-8.2.0                        (H)
+ 20) GMP/6.1.2-GCCcore-8.2.0                       (H)
+ 21) libffi/3.2.1-GCCcore-8.2.0                    (H)
+ 22) Python/3.7.2-GCCcore-8.2.0
+ 23) SciPy-bundle/2019.03-fosscuda-2019a
+ 24) Szip/2.1.1-GCCcore-8.2.0                      (H)
+ 25) HDF5/1.10.5-gompic-2019a
+ 26) h5py/2.9.0-fosscuda-2019a
+ 27) cuDNN/7.6.4.38-gcccuda-2019a
+ 28) TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2
+
+  Where:
+   H:  Hidden Module
+   S:  Module is Sticky, requires --force to unload or purge
+
+ 
+
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[10932,1],0] (PID 23427)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+-----------------------------------Parameters-----------------------------------
+>>> model: racl-bert
+>>> task: res14
+>>> batch_size: 8
+>>> learning_rate: 0.0001
+>>> kp1: 0.5
+>>> kp2: 0.5
+>>> reg_scale: 1e-05
+>>> filter_num: 512
+>>> class_num: 3
+>>> load: 0
+>>> max_sentence_len: 100
+>>> n_iter: 15
+>>> kernel_size: 3
+>>> hop_num: 4
+>>> warmup_iter: 10
+>>> emb_dim: 1024
+>>> data_path: data/res14/
+>>> train_path: data/res14/train/
+>>> test_path: data/res14/test/
+>>> dev_path: data/res14/dev/
+
+
+WARNING:tensorflow:From /cluster/software/TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /cluster/home/pmhalvor/nlp/msc/RACL/bert_modeling.py:644: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:From /cluster/home/pmhalvor/nlp/msc/RACL/model_bert.py:99: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv1d instead.
+WARNING:tensorflow:From /cluster/home/pmhalvor/nlp/msc/RACL/utils.py:344: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+>>> total parameter: 360352804
+WARNING:tensorflow:From /cluster/home/pmhalvor/nlp/msc/RACL/model_bert.py:193: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+
+Future major versions of TensorFlow will allow gradients to flow
+into the labels input on backprop by default.
+
+See `tf.nn.softmax_cross_entropy_with_logits_v2`.
+
+WARNING:tensorflow:From /cluster/software/TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /cluster/software/TensorFlow/1.13.1-fosscuda-2019a-Python-3.7.2/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+para 0/439 <tf.Variable 'bert/embeddings/word_embeddings:0' shape=(30522, 1024) dtype=float32_ref>
+para 1/439 <tf.Variable 'bert/embeddings/token_type_embeddings:0' shape=(2, 1024) dtype=float32_ref>
+para 2/439 <tf.Variable 'bert/embeddings/position_embeddings:0' shape=(512, 1024) dtype=float32_ref>
+para 3/439 <tf.Variable 'bert/embeddings/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 4/439 <tf.Variable 'bert/embeddings/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 5/439 <tf.Variable 'bert/encoder/layer_0/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 6/439 <tf.Variable 'bert/encoder/layer_0/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 7/439 <tf.Variable 'bert/encoder/layer_0/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 8/439 <tf.Variable 'bert/encoder/layer_0/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 9/439 <tf.Variable 'bert/encoder/layer_0/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 10/439 <tf.Variable 'bert/encoder/layer_0/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 11/439 <tf.Variable 'bert/encoder/layer_0/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 12/439 <tf.Variable 'bert/encoder/layer_0/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 13/439 <tf.Variable 'bert/encoder/layer_0/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 14/439 <tf.Variable 'bert/encoder/layer_0/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 15/439 <tf.Variable 'bert/encoder/layer_0/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 16/439 <tf.Variable 'bert/encoder/layer_0/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 17/439 <tf.Variable 'bert/encoder/layer_0/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 18/439 <tf.Variable 'bert/encoder/layer_0/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 19/439 <tf.Variable 'bert/encoder/layer_0/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 20/439 <tf.Variable 'bert/encoder/layer_0/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 21/439 <tf.Variable 'bert/encoder/layer_1/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 22/439 <tf.Variable 'bert/encoder/layer_1/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 23/439 <tf.Variable 'bert/encoder/layer_1/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 24/439 <tf.Variable 'bert/encoder/layer_1/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 25/439 <tf.Variable 'bert/encoder/layer_1/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 26/439 <tf.Variable 'bert/encoder/layer_1/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 27/439 <tf.Variable 'bert/encoder/layer_1/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 28/439 <tf.Variable 'bert/encoder/layer_1/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 29/439 <tf.Variable 'bert/encoder/layer_1/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 30/439 <tf.Variable 'bert/encoder/layer_1/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 31/439 <tf.Variable 'bert/encoder/layer_1/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 32/439 <tf.Variable 'bert/encoder/layer_1/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 33/439 <tf.Variable 'bert/encoder/layer_1/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 34/439 <tf.Variable 'bert/encoder/layer_1/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 35/439 <tf.Variable 'bert/encoder/layer_1/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 36/439 <tf.Variable 'bert/encoder/layer_1/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 37/439 <tf.Variable 'bert/encoder/layer_2/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 38/439 <tf.Variable 'bert/encoder/layer_2/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 39/439 <tf.Variable 'bert/encoder/layer_2/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 40/439 <tf.Variable 'bert/encoder/layer_2/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 41/439 <tf.Variable 'bert/encoder/layer_2/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 42/439 <tf.Variable 'bert/encoder/layer_2/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 43/439 <tf.Variable 'bert/encoder/layer_2/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 44/439 <tf.Variable 'bert/encoder/layer_2/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 45/439 <tf.Variable 'bert/encoder/layer_2/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 46/439 <tf.Variable 'bert/encoder/layer_2/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 47/439 <tf.Variable 'bert/encoder/layer_2/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 48/439 <tf.Variable 'bert/encoder/layer_2/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 49/439 <tf.Variable 'bert/encoder/layer_2/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 50/439 <tf.Variable 'bert/encoder/layer_2/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 51/439 <tf.Variable 'bert/encoder/layer_2/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 52/439 <tf.Variable 'bert/encoder/layer_2/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 53/439 <tf.Variable 'bert/encoder/layer_3/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 54/439 <tf.Variable 'bert/encoder/layer_3/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 55/439 <tf.Variable 'bert/encoder/layer_3/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 56/439 <tf.Variable 'bert/encoder/layer_3/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 57/439 <tf.Variable 'bert/encoder/layer_3/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 58/439 <tf.Variable 'bert/encoder/layer_3/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 59/439 <tf.Variable 'bert/encoder/layer_3/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 60/439 <tf.Variable 'bert/encoder/layer_3/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 61/439 <tf.Variable 'bert/encoder/layer_3/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 62/439 <tf.Variable 'bert/encoder/layer_3/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 63/439 <tf.Variable 'bert/encoder/layer_3/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 64/439 <tf.Variable 'bert/encoder/layer_3/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 65/439 <tf.Variable 'bert/encoder/layer_3/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 66/439 <tf.Variable 'bert/encoder/layer_3/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 67/439 <tf.Variable 'bert/encoder/layer_3/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 68/439 <tf.Variable 'bert/encoder/layer_3/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 69/439 <tf.Variable 'bert/encoder/layer_4/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 70/439 <tf.Variable 'bert/encoder/layer_4/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 71/439 <tf.Variable 'bert/encoder/layer_4/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 72/439 <tf.Variable 'bert/encoder/layer_4/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 73/439 <tf.Variable 'bert/encoder/layer_4/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 74/439 <tf.Variable 'bert/encoder/layer_4/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 75/439 <tf.Variable 'bert/encoder/layer_4/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 76/439 <tf.Variable 'bert/encoder/layer_4/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 77/439 <tf.Variable 'bert/encoder/layer_4/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 78/439 <tf.Variable 'bert/encoder/layer_4/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 79/439 <tf.Variable 'bert/encoder/layer_4/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 80/439 <tf.Variable 'bert/encoder/layer_4/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 81/439 <tf.Variable 'bert/encoder/layer_4/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 82/439 <tf.Variable 'bert/encoder/layer_4/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 83/439 <tf.Variable 'bert/encoder/layer_4/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 84/439 <tf.Variable 'bert/encoder/layer_4/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 85/439 <tf.Variable 'bert/encoder/layer_5/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 86/439 <tf.Variable 'bert/encoder/layer_5/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 87/439 <tf.Variable 'bert/encoder/layer_5/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 88/439 <tf.Variable 'bert/encoder/layer_5/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 89/439 <tf.Variable 'bert/encoder/layer_5/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 90/439 <tf.Variable 'bert/encoder/layer_5/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 91/439 <tf.Variable 'bert/encoder/layer_5/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 92/439 <tf.Variable 'bert/encoder/layer_5/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 93/439 <tf.Variable 'bert/encoder/layer_5/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 94/439 <tf.Variable 'bert/encoder/layer_5/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 95/439 <tf.Variable 'bert/encoder/layer_5/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 96/439 <tf.Variable 'bert/encoder/layer_5/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 97/439 <tf.Variable 'bert/encoder/layer_5/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 98/439 <tf.Variable 'bert/encoder/layer_5/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 99/439 <tf.Variable 'bert/encoder/layer_5/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 100/439 <tf.Variable 'bert/encoder/layer_5/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 101/439 <tf.Variable 'bert/encoder/layer_6/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 102/439 <tf.Variable 'bert/encoder/layer_6/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 103/439 <tf.Variable 'bert/encoder/layer_6/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 104/439 <tf.Variable 'bert/encoder/layer_6/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 105/439 <tf.Variable 'bert/encoder/layer_6/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 106/439 <tf.Variable 'bert/encoder/layer_6/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 107/439 <tf.Variable 'bert/encoder/layer_6/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 108/439 <tf.Variable 'bert/encoder/layer_6/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 109/439 <tf.Variable 'bert/encoder/layer_6/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 110/439 <tf.Variable 'bert/encoder/layer_6/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 111/439 <tf.Variable 'bert/encoder/layer_6/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 112/439 <tf.Variable 'bert/encoder/layer_6/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 113/439 <tf.Variable 'bert/encoder/layer_6/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 114/439 <tf.Variable 'bert/encoder/layer_6/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 115/439 <tf.Variable 'bert/encoder/layer_6/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 116/439 <tf.Variable 'bert/encoder/layer_6/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 117/439 <tf.Variable 'bert/encoder/layer_7/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 118/439 <tf.Variable 'bert/encoder/layer_7/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 119/439 <tf.Variable 'bert/encoder/layer_7/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 120/439 <tf.Variable 'bert/encoder/layer_7/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 121/439 <tf.Variable 'bert/encoder/layer_7/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 122/439 <tf.Variable 'bert/encoder/layer_7/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 123/439 <tf.Variable 'bert/encoder/layer_7/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 124/439 <tf.Variable 'bert/encoder/layer_7/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 125/439 <tf.Variable 'bert/encoder/layer_7/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 126/439 <tf.Variable 'bert/encoder/layer_7/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 127/439 <tf.Variable 'bert/encoder/layer_7/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 128/439 <tf.Variable 'bert/encoder/layer_7/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 129/439 <tf.Variable 'bert/encoder/layer_7/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 130/439 <tf.Variable 'bert/encoder/layer_7/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 131/439 <tf.Variable 'bert/encoder/layer_7/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 132/439 <tf.Variable 'bert/encoder/layer_7/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 133/439 <tf.Variable 'bert/encoder/layer_8/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 134/439 <tf.Variable 'bert/encoder/layer_8/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 135/439 <tf.Variable 'bert/encoder/layer_8/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 136/439 <tf.Variable 'bert/encoder/layer_8/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 137/439 <tf.Variable 'bert/encoder/layer_8/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 138/439 <tf.Variable 'bert/encoder/layer_8/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 139/439 <tf.Variable 'bert/encoder/layer_8/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 140/439 <tf.Variable 'bert/encoder/layer_8/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 141/439 <tf.Variable 'bert/encoder/layer_8/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 142/439 <tf.Variable 'bert/encoder/layer_8/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 143/439 <tf.Variable 'bert/encoder/layer_8/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 144/439 <tf.Variable 'bert/encoder/layer_8/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 145/439 <tf.Variable 'bert/encoder/layer_8/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 146/439 <tf.Variable 'bert/encoder/layer_8/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 147/439 <tf.Variable 'bert/encoder/layer_8/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 148/439 <tf.Variable 'bert/encoder/layer_8/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 149/439 <tf.Variable 'bert/encoder/layer_9/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 150/439 <tf.Variable 'bert/encoder/layer_9/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 151/439 <tf.Variable 'bert/encoder/layer_9/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 152/439 <tf.Variable 'bert/encoder/layer_9/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 153/439 <tf.Variable 'bert/encoder/layer_9/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 154/439 <tf.Variable 'bert/encoder/layer_9/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 155/439 <tf.Variable 'bert/encoder/layer_9/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 156/439 <tf.Variable 'bert/encoder/layer_9/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 157/439 <tf.Variable 'bert/encoder/layer_9/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 158/439 <tf.Variable 'bert/encoder/layer_9/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 159/439 <tf.Variable 'bert/encoder/layer_9/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 160/439 <tf.Variable 'bert/encoder/layer_9/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 161/439 <tf.Variable 'bert/encoder/layer_9/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 162/439 <tf.Variable 'bert/encoder/layer_9/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 163/439 <tf.Variable 'bert/encoder/layer_9/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 164/439 <tf.Variable 'bert/encoder/layer_9/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 165/439 <tf.Variable 'bert/encoder/layer_10/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 166/439 <tf.Variable 'bert/encoder/layer_10/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 167/439 <tf.Variable 'bert/encoder/layer_10/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 168/439 <tf.Variable 'bert/encoder/layer_10/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 169/439 <tf.Variable 'bert/encoder/layer_10/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 170/439 <tf.Variable 'bert/encoder/layer_10/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 171/439 <tf.Variable 'bert/encoder/layer_10/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 172/439 <tf.Variable 'bert/encoder/layer_10/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 173/439 <tf.Variable 'bert/encoder/layer_10/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 174/439 <tf.Variable 'bert/encoder/layer_10/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 175/439 <tf.Variable 'bert/encoder/layer_10/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 176/439 <tf.Variable 'bert/encoder/layer_10/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 177/439 <tf.Variable 'bert/encoder/layer_10/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 178/439 <tf.Variable 'bert/encoder/layer_10/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 179/439 <tf.Variable 'bert/encoder/layer_10/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 180/439 <tf.Variable 'bert/encoder/layer_10/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 181/439 <tf.Variable 'bert/encoder/layer_11/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 182/439 <tf.Variable 'bert/encoder/layer_11/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 183/439 <tf.Variable 'bert/encoder/layer_11/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 184/439 <tf.Variable 'bert/encoder/layer_11/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 185/439 <tf.Variable 'bert/encoder/layer_11/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 186/439 <tf.Variable 'bert/encoder/layer_11/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 187/439 <tf.Variable 'bert/encoder/layer_11/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 188/439 <tf.Variable 'bert/encoder/layer_11/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 189/439 <tf.Variable 'bert/encoder/layer_11/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 190/439 <tf.Variable 'bert/encoder/layer_11/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 191/439 <tf.Variable 'bert/encoder/layer_11/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 192/439 <tf.Variable 'bert/encoder/layer_11/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 193/439 <tf.Variable 'bert/encoder/layer_11/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 194/439 <tf.Variable 'bert/encoder/layer_11/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 195/439 <tf.Variable 'bert/encoder/layer_11/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 196/439 <tf.Variable 'bert/encoder/layer_11/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 197/439 <tf.Variable 'bert/encoder/layer_12/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 198/439 <tf.Variable 'bert/encoder/layer_12/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 199/439 <tf.Variable 'bert/encoder/layer_12/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 200/439 <tf.Variable 'bert/encoder/layer_12/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 201/439 <tf.Variable 'bert/encoder/layer_12/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 202/439 <tf.Variable 'bert/encoder/layer_12/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 203/439 <tf.Variable 'bert/encoder/layer_12/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 204/439 <tf.Variable 'bert/encoder/layer_12/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 205/439 <tf.Variable 'bert/encoder/layer_12/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 206/439 <tf.Variable 'bert/encoder/layer_12/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 207/439 <tf.Variable 'bert/encoder/layer_12/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 208/439 <tf.Variable 'bert/encoder/layer_12/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 209/439 <tf.Variable 'bert/encoder/layer_12/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 210/439 <tf.Variable 'bert/encoder/layer_12/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 211/439 <tf.Variable 'bert/encoder/layer_12/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 212/439 <tf.Variable 'bert/encoder/layer_12/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 213/439 <tf.Variable 'bert/encoder/layer_13/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 214/439 <tf.Variable 'bert/encoder/layer_13/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 215/439 <tf.Variable 'bert/encoder/layer_13/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 216/439 <tf.Variable 'bert/encoder/layer_13/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 217/439 <tf.Variable 'bert/encoder/layer_13/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 218/439 <tf.Variable 'bert/encoder/layer_13/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 219/439 <tf.Variable 'bert/encoder/layer_13/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 220/439 <tf.Variable 'bert/encoder/layer_13/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 221/439 <tf.Variable 'bert/encoder/layer_13/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 222/439 <tf.Variable 'bert/encoder/layer_13/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 223/439 <tf.Variable 'bert/encoder/layer_13/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 224/439 <tf.Variable 'bert/encoder/layer_13/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 225/439 <tf.Variable 'bert/encoder/layer_13/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 226/439 <tf.Variable 'bert/encoder/layer_13/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 227/439 <tf.Variable 'bert/encoder/layer_13/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 228/439 <tf.Variable 'bert/encoder/layer_13/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 229/439 <tf.Variable 'bert/encoder/layer_14/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 230/439 <tf.Variable 'bert/encoder/layer_14/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 231/439 <tf.Variable 'bert/encoder/layer_14/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 232/439 <tf.Variable 'bert/encoder/layer_14/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 233/439 <tf.Variable 'bert/encoder/layer_14/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 234/439 <tf.Variable 'bert/encoder/layer_14/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 235/439 <tf.Variable 'bert/encoder/layer_14/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 236/439 <tf.Variable 'bert/encoder/layer_14/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 237/439 <tf.Variable 'bert/encoder/layer_14/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 238/439 <tf.Variable 'bert/encoder/layer_14/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 239/439 <tf.Variable 'bert/encoder/layer_14/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 240/439 <tf.Variable 'bert/encoder/layer_14/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 241/439 <tf.Variable 'bert/encoder/layer_14/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 242/439 <tf.Variable 'bert/encoder/layer_14/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 243/439 <tf.Variable 'bert/encoder/layer_14/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 244/439 <tf.Variable 'bert/encoder/layer_14/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 245/439 <tf.Variable 'bert/encoder/layer_15/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 246/439 <tf.Variable 'bert/encoder/layer_15/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 247/439 <tf.Variable 'bert/encoder/layer_15/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 248/439 <tf.Variable 'bert/encoder/layer_15/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 249/439 <tf.Variable 'bert/encoder/layer_15/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 250/439 <tf.Variable 'bert/encoder/layer_15/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 251/439 <tf.Variable 'bert/encoder/layer_15/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 252/439 <tf.Variable 'bert/encoder/layer_15/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 253/439 <tf.Variable 'bert/encoder/layer_15/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 254/439 <tf.Variable 'bert/encoder/layer_15/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 255/439 <tf.Variable 'bert/encoder/layer_15/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 256/439 <tf.Variable 'bert/encoder/layer_15/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 257/439 <tf.Variable 'bert/encoder/layer_15/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 258/439 <tf.Variable 'bert/encoder/layer_15/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 259/439 <tf.Variable 'bert/encoder/layer_15/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 260/439 <tf.Variable 'bert/encoder/layer_15/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 261/439 <tf.Variable 'bert/encoder/layer_16/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 262/439 <tf.Variable 'bert/encoder/layer_16/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 263/439 <tf.Variable 'bert/encoder/layer_16/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 264/439 <tf.Variable 'bert/encoder/layer_16/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 265/439 <tf.Variable 'bert/encoder/layer_16/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 266/439 <tf.Variable 'bert/encoder/layer_16/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 267/439 <tf.Variable 'bert/encoder/layer_16/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 268/439 <tf.Variable 'bert/encoder/layer_16/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 269/439 <tf.Variable 'bert/encoder/layer_16/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 270/439 <tf.Variable 'bert/encoder/layer_16/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 271/439 <tf.Variable 'bert/encoder/layer_16/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 272/439 <tf.Variable 'bert/encoder/layer_16/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 273/439 <tf.Variable 'bert/encoder/layer_16/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 274/439 <tf.Variable 'bert/encoder/layer_16/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 275/439 <tf.Variable 'bert/encoder/layer_16/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 276/439 <tf.Variable 'bert/encoder/layer_16/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 277/439 <tf.Variable 'bert/encoder/layer_17/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 278/439 <tf.Variable 'bert/encoder/layer_17/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 279/439 <tf.Variable 'bert/encoder/layer_17/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 280/439 <tf.Variable 'bert/encoder/layer_17/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 281/439 <tf.Variable 'bert/encoder/layer_17/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 282/439 <tf.Variable 'bert/encoder/layer_17/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 283/439 <tf.Variable 'bert/encoder/layer_17/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 284/439 <tf.Variable 'bert/encoder/layer_17/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 285/439 <tf.Variable 'bert/encoder/layer_17/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 286/439 <tf.Variable 'bert/encoder/layer_17/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 287/439 <tf.Variable 'bert/encoder/layer_17/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 288/439 <tf.Variable 'bert/encoder/layer_17/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 289/439 <tf.Variable 'bert/encoder/layer_17/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 290/439 <tf.Variable 'bert/encoder/layer_17/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 291/439 <tf.Variable 'bert/encoder/layer_17/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 292/439 <tf.Variable 'bert/encoder/layer_17/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 293/439 <tf.Variable 'bert/encoder/layer_18/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 294/439 <tf.Variable 'bert/encoder/layer_18/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 295/439 <tf.Variable 'bert/encoder/layer_18/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 296/439 <tf.Variable 'bert/encoder/layer_18/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 297/439 <tf.Variable 'bert/encoder/layer_18/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 298/439 <tf.Variable 'bert/encoder/layer_18/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 299/439 <tf.Variable 'bert/encoder/layer_18/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 300/439 <tf.Variable 'bert/encoder/layer_18/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 301/439 <tf.Variable 'bert/encoder/layer_18/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 302/439 <tf.Variable 'bert/encoder/layer_18/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 303/439 <tf.Variable 'bert/encoder/layer_18/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 304/439 <tf.Variable 'bert/encoder/layer_18/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 305/439 <tf.Variable 'bert/encoder/layer_18/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 306/439 <tf.Variable 'bert/encoder/layer_18/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 307/439 <tf.Variable 'bert/encoder/layer_18/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 308/439 <tf.Variable 'bert/encoder/layer_18/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 309/439 <tf.Variable 'bert/encoder/layer_19/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 310/439 <tf.Variable 'bert/encoder/layer_19/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 311/439 <tf.Variable 'bert/encoder/layer_19/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 312/439 <tf.Variable 'bert/encoder/layer_19/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 313/439 <tf.Variable 'bert/encoder/layer_19/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 314/439 <tf.Variable 'bert/encoder/layer_19/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 315/439 <tf.Variable 'bert/encoder/layer_19/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 316/439 <tf.Variable 'bert/encoder/layer_19/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 317/439 <tf.Variable 'bert/encoder/layer_19/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 318/439 <tf.Variable 'bert/encoder/layer_19/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 319/439 <tf.Variable 'bert/encoder/layer_19/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 320/439 <tf.Variable 'bert/encoder/layer_19/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 321/439 <tf.Variable 'bert/encoder/layer_19/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 322/439 <tf.Variable 'bert/encoder/layer_19/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 323/439 <tf.Variable 'bert/encoder/layer_19/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 324/439 <tf.Variable 'bert/encoder/layer_19/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 325/439 <tf.Variable 'bert/encoder/layer_20/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 326/439 <tf.Variable 'bert/encoder/layer_20/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 327/439 <tf.Variable 'bert/encoder/layer_20/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 328/439 <tf.Variable 'bert/encoder/layer_20/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 329/439 <tf.Variable 'bert/encoder/layer_20/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 330/439 <tf.Variable 'bert/encoder/layer_20/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 331/439 <tf.Variable 'bert/encoder/layer_20/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 332/439 <tf.Variable 'bert/encoder/layer_20/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 333/439 <tf.Variable 'bert/encoder/layer_20/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 334/439 <tf.Variable 'bert/encoder/layer_20/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 335/439 <tf.Variable 'bert/encoder/layer_20/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 336/439 <tf.Variable 'bert/encoder/layer_20/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 337/439 <tf.Variable 'bert/encoder/layer_20/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 338/439 <tf.Variable 'bert/encoder/layer_20/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 339/439 <tf.Variable 'bert/encoder/layer_20/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 340/439 <tf.Variable 'bert/encoder/layer_20/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 341/439 <tf.Variable 'bert/encoder/layer_21/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 342/439 <tf.Variable 'bert/encoder/layer_21/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 343/439 <tf.Variable 'bert/encoder/layer_21/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 344/439 <tf.Variable 'bert/encoder/layer_21/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 345/439 <tf.Variable 'bert/encoder/layer_21/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 346/439 <tf.Variable 'bert/encoder/layer_21/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 347/439 <tf.Variable 'bert/encoder/layer_21/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 348/439 <tf.Variable 'bert/encoder/layer_21/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 349/439 <tf.Variable 'bert/encoder/layer_21/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 350/439 <tf.Variable 'bert/encoder/layer_21/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 351/439 <tf.Variable 'bert/encoder/layer_21/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 352/439 <tf.Variable 'bert/encoder/layer_21/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 353/439 <tf.Variable 'bert/encoder/layer_21/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 354/439 <tf.Variable 'bert/encoder/layer_21/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 355/439 <tf.Variable 'bert/encoder/layer_21/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 356/439 <tf.Variable 'bert/encoder/layer_21/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 357/439 <tf.Variable 'bert/encoder/layer_22/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 358/439 <tf.Variable 'bert/encoder/layer_22/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 359/439 <tf.Variable 'bert/encoder/layer_22/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 360/439 <tf.Variable 'bert/encoder/layer_22/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 361/439 <tf.Variable 'bert/encoder/layer_22/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 362/439 <tf.Variable 'bert/encoder/layer_22/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 363/439 <tf.Variable 'bert/encoder/layer_22/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 364/439 <tf.Variable 'bert/encoder/layer_22/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 365/439 <tf.Variable 'bert/encoder/layer_22/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 366/439 <tf.Variable 'bert/encoder/layer_22/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 367/439 <tf.Variable 'bert/encoder/layer_22/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 368/439 <tf.Variable 'bert/encoder/layer_22/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 369/439 <tf.Variable 'bert/encoder/layer_22/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 370/439 <tf.Variable 'bert/encoder/layer_22/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 371/439 <tf.Variable 'bert/encoder/layer_22/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 372/439 <tf.Variable 'bert/encoder/layer_22/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 373/439 <tf.Variable 'bert/encoder/layer_23/attention/self/query/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 374/439 <tf.Variable 'bert/encoder/layer_23/attention/self/query/bias:0' shape=(1024,) dtype=float32_ref>
+para 375/439 <tf.Variable 'bert/encoder/layer_23/attention/self/key/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 376/439 <tf.Variable 'bert/encoder/layer_23/attention/self/key/bias:0' shape=(1024,) dtype=float32_ref>
+para 377/439 <tf.Variable 'bert/encoder/layer_23/attention/self/value/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 378/439 <tf.Variable 'bert/encoder/layer_23/attention/self/value/bias:0' shape=(1024,) dtype=float32_ref>
+para 379/439 <tf.Variable 'bert/encoder/layer_23/attention/output/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 380/439 <tf.Variable 'bert/encoder/layer_23/attention/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 381/439 <tf.Variable 'bert/encoder/layer_23/attention/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 382/439 <tf.Variable 'bert/encoder/layer_23/attention/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 383/439 <tf.Variable 'bert/encoder/layer_23/intermediate/dense/kernel:0' shape=(1024, 4096) dtype=float32_ref>
+para 384/439 <tf.Variable 'bert/encoder/layer_23/intermediate/dense/bias:0' shape=(4096,) dtype=float32_ref>
+para 385/439 <tf.Variable 'bert/encoder/layer_23/output/dense/kernel:0' shape=(4096, 1024) dtype=float32_ref>
+para 386/439 <tf.Variable 'bert/encoder/layer_23/output/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 387/439 <tf.Variable 'bert/encoder/layer_23/output/LayerNorm/beta:0' shape=(1024,) dtype=float32_ref>
+para 388/439 <tf.Variable 'bert/encoder/layer_23/output/LayerNorm/gamma:0' shape=(1024,) dtype=float32_ref>
+para 389/439 <tf.Variable 'bert/pooler/dense/kernel:0' shape=(1024, 1024) dtype=float32_ref>
+para 390/439 <tf.Variable 'bert/pooler/dense/bias:0' shape=(1024,) dtype=float32_ref>
+para 391/439 <tf.Variable 'layers_0/aspect_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 392/439 <tf.Variable 'layers_0/aspect_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 393/439 <tf.Variable 'layers_0/opinion_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 394/439 <tf.Variable 'layers_0/opinion_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 395/439 <tf.Variable 'layers_0/aspect_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 396/439 <tf.Variable 'layers_0/aspect_p/biases:0' shape=(3,) dtype=float32_ref>
+para 397/439 <tf.Variable 'layers_0/opinion_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 398/439 <tf.Variable 'layers_0/opinion_p/biases:0' shape=(3,) dtype=float32_ref>
+para 399/439 <tf.Variable 'layers_0/context_conv/kernel:0' shape=(3, 1024, 1024) dtype=float32_ref>
+para 400/439 <tf.Variable 'layers_0/context_conv/bias:0' shape=(1024,) dtype=float32_ref>
+para 401/439 <tf.Variable 'layers_0/senti_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 402/439 <tf.Variable 'layers_0/senti_p/biases:0' shape=(3,) dtype=float32_ref>
+para 403/439 <tf.Variable 'layers_1/aspect_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 404/439 <tf.Variable 'layers_1/aspect_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 405/439 <tf.Variable 'layers_1/opinion_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 406/439 <tf.Variable 'layers_1/opinion_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 407/439 <tf.Variable 'layers_1/aspect_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 408/439 <tf.Variable 'layers_1/aspect_p/biases:0' shape=(3,) dtype=float32_ref>
+para 409/439 <tf.Variable 'layers_1/opinion_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 410/439 <tf.Variable 'layers_1/opinion_p/biases:0' shape=(3,) dtype=float32_ref>
+para 411/439 <tf.Variable 'layers_1/context_conv/kernel:0' shape=(3, 1024, 1024) dtype=float32_ref>
+para 412/439 <tf.Variable 'layers_1/context_conv/bias:0' shape=(1024,) dtype=float32_ref>
+para 413/439 <tf.Variable 'layers_1/senti_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 414/439 <tf.Variable 'layers_1/senti_p/biases:0' shape=(3,) dtype=float32_ref>
+para 415/439 <tf.Variable 'layers_2/aspect_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 416/439 <tf.Variable 'layers_2/aspect_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 417/439 <tf.Variable 'layers_2/opinion_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 418/439 <tf.Variable 'layers_2/opinion_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 419/439 <tf.Variable 'layers_2/aspect_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 420/439 <tf.Variable 'layers_2/aspect_p/biases:0' shape=(3,) dtype=float32_ref>
+para 421/439 <tf.Variable 'layers_2/opinion_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 422/439 <tf.Variable 'layers_2/opinion_p/biases:0' shape=(3,) dtype=float32_ref>
+para 423/439 <tf.Variable 'layers_2/context_conv/kernel:0' shape=(3, 1024, 1024) dtype=float32_ref>
+para 424/439 <tf.Variable 'layers_2/context_conv/bias:0' shape=(1024,) dtype=float32_ref>
+para 425/439 <tf.Variable 'layers_2/senti_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 426/439 <tf.Variable 'layers_2/senti_p/biases:0' shape=(3,) dtype=float32_ref>
+para 427/439 <tf.Variable 'layers_3/aspect_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 428/439 <tf.Variable 'layers_3/aspect_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 429/439 <tf.Variable 'layers_3/opinion_conv/kernel:0' shape=(3, 1024, 512) dtype=float32_ref>
+para 430/439 <tf.Variable 'layers_3/opinion_conv/bias:0' shape=(512,) dtype=float32_ref>
+para 431/439 <tf.Variable 'layers_3/aspect_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 432/439 <tf.Variable 'layers_3/aspect_p/biases:0' shape=(3,) dtype=float32_ref>
+para 433/439 <tf.Variable 'layers_3/opinion_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 434/439 <tf.Variable 'layers_3/opinion_p/biases:0' shape=(3,) dtype=float32_ref>
+para 435/439 <tf.Variable 'layers_3/context_conv/kernel:0' shape=(3, 1024, 1024) dtype=float32_ref>
+para 436/439 <tf.Variable 'layers_3/context_conv/bias:0' shape=(1024,) dtype=float32_ref>
+para 437/439 <tf.Variable 'layers_3/senti_p/weights:0' shape=(1024, 3) dtype=float32_ref>
+para 438/439 <tf.Variable 'layers_3/senti_p/biases:0' shape=(3,) dtype=float32_ref>
+
+  0%|          | 0/305 [00:00<?, ?it/s]
+  0%|          | 1/305 [00:56<4:43:59, 56.05s/it]
+  1%|          | 2/305 [01:10<2:39:39, 31.61s/it]
+  1%|          | 3/305 [01:25<1:59:44, 23.79s/it]
+  1%|▏         | 4/305 [01:39<1:40:40, 20.07s/it]
+  2%|▏         | 5/305 [01:53<1:30:08, 18.03s/it]
+  2%|▏         | 6/305 [02:08<1:23:28, 16.75s/it]
+  2%|▏         | 7/305 [02:22<1:19:02, 15.91s/it]
+  3%|▎         | 8/305 [02:36<1:16:14, 15.40s/it]
+  3%|▎         | 9/305 [02:50<1:14:25, 15.09s/it]
+  3%|▎         | 10/305 [03:05<1:13:11, 14.89s/it]
+  4%|▎         | 11/305 [03:19<1:11:59, 14.69s/it]
+  4%|▍         | 12/305 [03:33<1:11:04, 14.55s/it]
+  4%|▍         | 13/305 [03:48<1:10:33, 14.50s/it]
+  5%|▍         | 14/305 [04:02<1:10:20, 14.50s/it]
+  5%|▍         | 15/305 [04:17<1:09:56, 14.47s/it]
+  5%|▌         | 16/305 [04:32<1:10:21, 14.61s/it]
+  6%|▌         | 17/305 [04:47<1:10:40, 14.73s/it]
+  6%|▌         | 18/305 [05:01<1:09:40, 14.56s/it]
+  6%|▌         | 19/305 [05:15<1:09:21, 14.55s/it]
+  7%|▋         | 20/305 [05:30<1:09:16, 14.58s/it]
+  7%|▋         | 21/305 [05:44<1:08:56, 14.56s/it]
+  7%|▋         | 22/305 [05:59<1:08:58, 14.62s/it]
+  8%|▊         | 23/305 [06:14<1:08:25, 14.56s/it]
+  8%|▊         | 24/305 [06:28<1:07:54, 14.50s/it]
+  8%|▊         | 25/305 [06:43<1:07:42, 14.51s/it]
+  9%|▊         | 26/305 [06:57<1:07:05, 14.43s/it]
+  9%|▉         | 27/305 [07:11<1:07:03, 14.47s/it]
+  9%|▉         | 28/305 [07:26<1:06:34, 14.42s/it]
+ 10%|▉         | 29/305 [07:40<1:06:25, 14.44s/it]
+ 10%|▉         | 30/305 [07:55<1:06:33, 14.52s/it]
+ 10%|█         | 31/305 [08:09<1:05:37, 14.37s/it]
+ 10%|█         | 32/305 [08:23<1:05:18, 14.35s/it]
+ 11%|█         | 33/305 [08:38<1:05:18, 14.41s/it]
+ 11%|█         | 34/305 [08:52<1:05:05, 14.41s/it]
+ 11%|█▏        | 35/305 [09:07<1:04:58, 14.44s/it]
+ 12%|█▏        | 36/305 [09:21<1:05:00, 14.50s/it]
+ 12%|█▏        | 37/305 [09:36<1:04:41, 14.49s/it]
+ 12%|█▏        | 38/305 [09:50<1:04:31, 14.50s/it]
+ 13%|█▎        | 39/305 [10:05<1:04:10, 14.48s/it]
+ 13%|█▎        | 40/305 [10:19<1:03:43, 14.43s/it]
+ 13%|█▎        | 41/305 [10:33<1:03:28, 14.43s/it]
+ 14%|█▍        | 42/305 [10:48<1:03:00, 14.37s/it]
+ 14%|█▍        | 43/305 [11:02<1:02:40, 14.35s/it]
+ 14%|█▍        | 44/305 [11:16<1:02:35, 14.39s/it]
+ 15%|█▍        | 45/305 [11:31<1:02:31, 14.43s/it]
+ 15%|█▌        | 46/305 [11:45<1:02:13, 14.41s/it]
+ 15%|█▌        | 47/305 [12:00<1:01:39, 14.34s/it]
+ 16%|█▌        | 48/305 [12:14<1:01:17, 14.31s/it]
+ 16%|█▌        | 49/305 [12:28<1:01:34, 14.43s/it]
+ 16%|█▋        | 50/305 [12:43<1:01:37, 14.50s/it]
+ 17%|█▋        | 51/305 [12:58<1:01:13, 14.46s/it]
+ 17%|█▋        | 52/305 [13:12<1:00:38, 14.38s/it]
+ 17%|█▋        | 53/305 [13:26<1:00:36, 14.43s/it]
+ 18%|█▊        | 54/305 [13:41<1:00:28, 14.46s/it]
+ 18%|█▊        | 55/305 [13:55<1:00:04, 14.42s/it]
+ 18%|█▊        | 56/305 [14:09<59:35, 14.36s/it]  
+ 19%|█▊        | 57/305 [14:24<59:24, 14.37s/it]
+ 19%|█▉        | 58/305 [14:38<59:14, 14.39s/it]
+ 19%|█▉        | 59/305 [14:52<58:49, 14.35s/it]
+ 20%|█▉        | 60/305 [15:07<58:51, 14.41s/it]
+ 20%|██        | 61/305 [15:21<58:35, 14.41s/it]
+ 20%|██        | 62/305 [15:36<58:28, 14.44s/it]
+ 21%|██        | 63/305 [15:50<58:12, 14.43s/it]
+ 21%|██        | 64/305 [16:05<57:41, 14.36s/it]
+ 21%|██▏       | 65/305 [16:19<57:33, 14.39s/it]
+ 22%|██▏       | 66/305 [16:33<57:20, 14.40s/it]
+ 22%|██▏       | 67/305 [16:48<56:53, 14.34s/it]
+ 22%|██▏       | 68/305 [17:02<56:19, 14.26s/it]
+ 23%|██▎       | 69/305 [17:16<56:06, 14.27s/it]
+ 23%|██▎       | 70/305 [17:31<56:24, 14.40s/it]
+ 23%|██▎       | 71/305 [17:45<56:07, 14.39s/it]
+ 24%|██▎       | 72/305 [17:59<55:42, 14.35s/it]
+ 24%|██▍       | 73/305 [18:14<55:23, 14.33s/it]
+ 24%|██▍       | 74/305 [18:28<55:11, 14.33s/it]
+ 25%|██▍       | 75/305 [18:42<54:47, 14.30s/it]
+ 25%|██▍       | 76/305 [18:56<54:38, 14.32s/it]
+ 25%|██▌       | 77/305 [19:11<54:33, 14.36s/it]
+ 26%|██▌       | 78/305 [19:26<54:38, 14.44s/it]
+ 26%|██▌       | 79/305 [19:40<54:24, 14.45s/it]
+ 26%|██▌       | 80/305 [19:54<54:10, 14.45s/it]
+ 27%|██▋       | 81/305 [20:09<53:48, 14.41s/it]
+ 27%|██▋       | 82/305 [20:23<53:30, 14.40s/it]
+ 27%|██▋       | 83/305 [20:38<53:14, 14.39s/it]
+ 28%|██▊       | 84/305 [20:52<52:56, 14.37s/it]
+ 28%|██▊       | 85/305 [21:06<52:41, 14.37s/it]
+ 28%|██▊       | 86/305 [21:21<52:28, 14.38s/it]
+ 29%|██▊       | 87/305 [21:35<52:20, 14.41s/it]
+ 29%|██▉       | 88/305 [21:49<52:05, 14.40s/it]
+ 29%|██▉       | 89/305 [22:04<51:47, 14.39s/it]
+ 30%|██▉       | 90/305 [22:18<51:38, 14.41s/it]
+ 30%|██▉       | 91/305 [22:33<51:21, 14.40s/it]
+ 30%|███       | 92/305 [22:47<50:44, 14.29s/it]
+ 30%|███       | 93/305 [23:01<50:38, 14.33s/it]
+ 31%|███       | 94/305 [23:16<50:28, 14.35s/it]
+ 31%|███       | 95/305 [23:30<50:23, 14.40s/it]
+ 31%|███▏      | 96/305 [23:44<49:42, 14.27s/it]
+ 32%|███▏      | 97/305 [23:58<49:34, 14.30s/it]
+ 32%|███▏      | 98/305 [24:13<49:16, 14.28s/it]
+ 32%|███▏      | 99/305 [24:27<49:02, 14.28s/it]
+ 33%|███▎      | 100/305 [24:41<49:01, 14.35s/it]
+ 33%|███▎      | 101/305 [24:56<48:58, 14.40s/it]
+ 33%|███▎      | 102/305 [25:10<48:31, 14.34s/it]
+ 34%|███▍      | 103/305 [25:24<48:15, 14.34s/it]
+ 34%|███▍      | 104/305 [25:39<48:09, 14.38s/it]
+ 34%|███▍      | 105/305 [25:53<47:49, 14.35s/it]
+ 35%|███▍      | 106/305 [26:08<47:44, 14.39s/it]
+ 35%|███▌      | 107/305 [26:22<47:36, 14.43s/it]
+ 35%|███▌      | 108/305 [26:37<47:31, 14.48s/it]
+ 36%|███▌      | 109/305 [26:51<47:22, 14.50s/it]
+ 36%|███▌      | 110/305 [27:06<47:08, 14.50s/it]
+ 36%|███▋      | 111/305 [27:20<46:57, 14.53s/it]
+ 37%|███▋      | 112/305 [27:35<46:48, 14.55s/it]
+ 37%|███▋      | 113/305 [27:49<46:10, 14.43s/it]
+ 37%|███▋      | 114/305 [28:04<45:52, 14.41s/it]
+ 38%|███▊      | 115/305 [28:18<45:41, 14.43s/it]
+ 38%|███▊      | 116/305 [28:33<45:36, 14.48s/it]
+ 38%|███▊      | 117/305 [28:47<45:26, 14.50s/it]
+ 39%|███▊      | 118/305 [29:02<45:02, 14.45s/it]
+ 39%|███▉      | 119/305 [29:17<45:58, 14.83s/it]
+ 39%|███▉      | 120/305 [29:32<45:31, 14.76s/it]
+ 40%|███▉      | 121/305 [29:46<45:05, 14.71s/it]
+ 40%|████      | 122/305 [30:01<44:26, 14.57s/it]
+ 40%|████      | 123/305 [30:15<44:14, 14.58s/it]
+ 41%|████      | 124/305 [30:30<43:51, 14.54s/it]
+ 41%|████      | 125/305 [30:44<43:30, 14.50s/it]
+ 41%|████▏     | 126/305 [30:58<43:06, 14.45s/it]
+ 42%|████▏     | 127/305 [31:13<42:34, 14.35s/it]
+ 42%|████▏     | 128/305 [31:27<42:15, 14.32s/it]
+ 42%|████▏     | 129/305 [31:41<41:55, 14.29s/it]
+ 43%|████▎     | 130/305 [31:55<41:33, 14.25s/it]
+ 43%|████▎     | 131/305 [32:10<41:21, 14.26s/it]
+ 43%|████▎     | 132/305 [32:24<41:14, 14.30s/it]
+ 44%|████▎     | 133/305 [32:39<41:16, 14.40s/it]
+ 44%|████▍     | 134/305 [32:53<41:06, 14.42s/it]
+ 44%|████▍     | 135/305 [33:08<41:08, 14.52s/it]
+ 45%|████▍     | 136/305 [33:22<40:50, 14.50s/it]
+ 45%|████▍     | 137/305 [33:37<40:32, 14.48s/it]
+ 45%|████▌     | 138/305 [33:51<40:19, 14.49s/it]
+ 46%|████▌     | 139/305 [34:06<40:02, 14.47s/it]
+ 46%|████▌     | 140/305 [34:20<39:43, 14.44s/it]
+ 46%|████▌     | 141/305 [34:35<39:35, 14.48s/it]
+ 47%|████▋     | 142/305 [34:49<39:22, 14.49s/it]
+ 47%|████▋     | 143/305 [35:03<38:52, 14.40s/it]
+ 47%|████▋     | 144/305 [35:18<38:49, 14.47s/it]
+ 48%|████▊     | 145/305 [35:33<38:47, 14.55s/it]
+ 48%|████▊     | 146/305 [35:47<38:24, 14.49s/it]
+ 48%|████▊     | 147/305 [36:01<37:56, 14.41s/it]
+ 49%|████▊     | 148/305 [36:16<37:47, 14.44s/it]
+ 49%|████▉     | 149/305 [36:30<37:28, 14.41s/it]
+ 49%|████▉     | 150/305 [36:44<36:55, 14.29s/it]
+ 50%|████▉     | 151/305 [36:58<36:43, 14.31s/it]
+ 50%|████▉     | 152/305 [37:13<36:52, 14.46s/it]
+ 50%|█████     | 153/305 [37:28<36:36, 14.45s/it]
+ 50%|█████     | 154/305 [37:42<36:17, 14.42s/it]
+ 51%|█████     | 155/305 [37:56<35:58, 14.39s/it]
+ 51%|█████     | 156/305 [38:11<36:02, 14.51s/it]
+ 51%|█████▏    | 157/305 [38:26<35:43, 14.49s/it]
+ 52%|█████▏    | 158/305 [38:40<35:11, 14.36s/it]
+ 52%|█████▏    | 159/305 [38:54<35:00, 14.39s/it]
+ 52%|█████▏    | 160/305 [39:09<34:55, 14.45s/it]
+ 53%|█████▎    | 161/305 [39:23<34:48, 14.50s/it]
+ 53%|█████▎    | 162/305 [39:38<34:22, 14.42s/it]
+ 53%|█████▎    | 163/305 [39:52<34:01, 14.38s/it]
+ 54%|█████▍    | 164/305 [40:06<33:49, 14.39s/it]
+ 54%|█████▍    | 165/305 [40:21<33:35, 14.39s/it]
+ 54%|█████▍    | 166/305 [40:35<33:17, 14.37s/it]
+ 55%|█████▍    | 167/305 [40:49<33:09, 14.42s/it]
+ 55%|█████▌    | 168/305 [41:04<33:05, 14.49s/it]
+ 55%|█████▌    | 169/305 [41:18<32:43, 14.44s/it]
+ 56%|█████▌    | 170/305 [41:33<32:27, 14.42s/it]
+ 56%|█████▌    | 171/305 [41:47<32:12, 14.43s/it]
+ 56%|█████▋    | 172/305 [42:02<32:03, 14.46s/it]
+ 57%|█████▋    | 173/305 [42:16<31:48, 14.46s/it]
+ 57%|█████▋    | 174/305 [42:31<31:48, 14.57s/it]
+ 57%|█████▋    | 175/305 [42:46<31:31, 14.55s/it]
+ 58%|█████▊    | 176/305 [43:00<31:17, 14.55s/it]
+ 58%|█████▊    | 177/305 [43:14<30:53, 14.48s/it]
+ 58%|█████▊    | 178/305 [43:29<30:38, 14.47s/it]
+ 59%|█████▊    | 179/305 [43:43<30:22, 14.47s/it]
+ 59%|█████▉    | 180/305 [43:58<30:13, 14.51s/it]
+ 59%|█████▉    | 181/305 [44:12<29:56, 14.49s/it]
+ 60%|█████▉    | 182/305 [44:27<29:34, 14.43s/it]
+ 60%|██████    | 183/305 [44:41<29:24, 14.47s/it]
+ 60%|██████    | 184/305 [44:56<29:04, 14.42s/it]
+ 61%|██████    | 185/305 [45:10<28:46, 14.38s/it]
+ 61%|██████    | 186/305 [45:24<28:34, 14.41s/it]
+ 61%|██████▏   | 187/305 [45:39<28:19, 14.40s/it]
+ 62%|██████▏   | 188/305 [45:53<28:01, 14.37s/it]
+ 62%|██████▏   | 189/305 [46:07<27:43, 14.34s/it]
+ 62%|██████▏   | 190/305 [46:22<27:33, 14.38s/it]
+ 63%|██████▎   | 191/305 [46:36<27:15, 14.35s/it]
+ 63%|██████▎   | 192/305 [46:51<27:07, 14.41s/it]
+ 63%|██████▎   | 193/305 [47:05<27:01, 14.48s/it]
+ 64%|██████▎   | 194/305 [47:20<26:48, 14.49s/it]
+ 64%|██████▍   | 195/305 [47:34<26:29, 14.45s/it]
+ 64%|██████▍   | 196/305 [47:49<26:21, 14.51s/it]
+ 65%|██████▍   | 197/305 [48:03<26:01, 14.46s/it]
+ 65%|██████▍   | 198/305 [48:18<25:48, 14.47s/it]
+ 65%|██████▌   | 199/305 [48:32<25:24, 14.38s/it]
+ 66%|██████▌   | 200/305 [48:46<24:54, 14.24s/it]
+ 66%|██████▌   | 201/305 [49:00<24:45, 14.29s/it]
+ 66%|██████▌   | 202/305 [49:14<24:27, 14.25s/it]
+ 67%|██████▋   | 203/305 [49:28<24:06, 14.18s/it]
+ 67%|██████▋   | 204/305 [49:43<23:55, 14.21s/it]
+ 67%|██████▋   | 205/305 [49:57<23:42, 14.23s/it]
+ 68%|██████▊   | 206/305 [50:11<23:17, 14.11s/it]
+ 68%|██████▊   | 207/305 [50:25<22:59, 14.07s/it]
+ 68%|██████▊   | 208/305 [50:39<22:51, 14.14s/it]
+ 69%|██████▊   | 209/305 [50:53<22:35, 14.12s/it]
+ 69%|██████▉   | 210/305 [51:07<22:13, 14.04s/it]
+ 69%|██████▉   | 211/305 [51:21<22:00, 14.04s/it]
+ 70%|██████▉   | 212/305 [51:35<21:39, 13.97s/it]
+ 70%|██████▉   | 213/305 [51:49<21:34, 14.07s/it]
+ 70%|███████   | 214/305 [52:03<21:12, 13.99s/it]
+ 70%|███████   | 215/305 [52:17<21:05, 14.07s/it]
+ 71%|███████   | 216/305 [52:31<20:50, 14.05s/it]
+ 71%|███████   | 217/305 [52:45<20:38, 14.07s/it]
+ 71%|███████▏  | 218/305 [53:00<20:35, 14.20s/it]
+ 72%|███████▏  | 219/305 [53:14<20:27, 14.27s/it]
+ 72%|███████▏  | 220/305 [53:28<20:07, 14.21s/it]
+ 72%|███████▏  | 221/305 [53:43<20:12, 14.43s/it]
+ 73%|███████▎  | 222/305 [53:57<19:55, 14.40s/it]
+ 73%|███████▎  | 223/305 [54:12<19:32, 14.30s/it]
+ 73%|███████▎  | 224/305 [54:26<19:23, 14.36s/it]
+ 74%|███████▍  | 225/305 [54:41<19:13, 14.41s/it]
+ 74%|███████▍  | 226/305 [54:55<18:56, 14.39s/it]
+ 74%|███████▍  | 227/305 [55:09<18:40, 14.37s/it]
+ 75%|███████▍  | 228/305 [55:23<18:23, 14.34s/it]
+ 75%|███████▌  | 229/305 [55:38<18:08, 14.33s/it]
+ 75%|███████▌  | 230/305 [55:52<17:54, 14.33s/it]
+ 76%|███████▌  | 231/305 [56:06<17:39, 14.31s/it]
+ 76%|███████▌  | 232/305 [56:21<17:26, 14.34s/it]
+ 76%|███████▋  | 233/305 [56:35<17:11, 14.32s/it]
+ 77%|███████▋  | 234/305 [56:49<16:58, 14.34s/it]
+ 77%|███████▋  | 235/305 [57:04<16:41, 14.30s/it]
+ 77%|███████▋  | 236/305 [57:18<16:29, 14.35s/it]
+ 78%|███████▊  | 237/305 [57:32<16:06, 14.22s/it]
+ 78%|███████▊  | 238/305 [57:46<15:56, 14.28s/it]
+ 78%|███████▊  | 239/305 [58:01<15:39, 14.24s/it]
+ 79%|███████▊  | 240/305 [58:15<15:21, 14.18s/it]
+ 79%|███████▉  | 241/305 [58:29<15:08, 14.20s/it]
+ 79%|███████▉  | 242/305 [58:43<14:58, 14.26s/it]
+ 80%|███████▉  | 243/305 [58:58<14:43, 14.25s/it]
+ 80%|████████  | 244/305 [59:12<14:32, 14.30s/it]
+ 80%|████████  | 245/305 [59:26<14:18, 14.30s/it]
+ 81%|████████  | 246/305 [59:41<14:05, 14.34s/it]
+ 81%|████████  | 247/305 [59:55<13:56, 14.42s/it]
+ 81%|████████▏ | 248/305 [1:00:10<13:39, 14.38s/it]
+ 82%|████████▏ | 249/305 [1:00:24<13:22, 14.33s/it]
+ 82%|████████▏ | 250/305 [1:00:38<13:06, 14.30s/it]
+ 82%|████████▏ | 251/305 [1:00:52<12:48, 14.24s/it]
+ 83%|████████▎ | 252/305 [1:01:06<12:35, 14.25s/it]
+ 83%|████████▎ | 253/305 [1:01:21<12:21, 14.27s/it]
+ 83%|████████▎ | 254/305 [1:01:35<12:12, 14.36s/it]
+ 84%|████████▎ | 255/305 [1:01:50<12:02, 14.45s/it]
+ 84%|████████▍ | 256/305 [1:02:04<11:42, 14.34s/it]
+ 84%|████████▍ | 257/305 [1:02:18<11:29, 14.36s/it]
+ 85%|████████▍ | 258/305 [1:02:33<11:13, 14.34s/it]
+ 85%|████████▍ | 259/305 [1:02:47<11:00, 14.35s/it]
+ 85%|████████▌ | 260/305 [1:03:02<10:47, 14.39s/it]
+ 86%|████████▌ | 261/305 [1:03:16<10:34, 14.42s/it]
+ 86%|████████▌ | 262/305 [1:03:30<10:19, 14.40s/it]
+ 86%|████████▌ | 263/305 [1:03:45<10:05, 14.43s/it]
+ 87%|████████▋ | 264/305 [1:03:59<09:48, 14.35s/it]
+ 87%|████████▋ | 265/305 [1:04:13<09:34, 14.36s/it]
+ 87%|████████▋ | 266/305 [1:04:28<09:19, 14.35s/it]
+ 88%|████████▊ | 267/305 [1:04:42<09:04, 14.34s/it]
+ 88%|████████▊ | 268/305 [1:04:56<08:47, 14.25s/it]
+ 88%|████████▊ | 269/305 [1:05:10<08:33, 14.26s/it]
+ 89%|████████▊ | 270/305 [1:05:25<08:21, 14.34s/it]
+ 89%|████████▉ | 271/305 [1:05:39<08:07, 14.34s/it]
+ 89%|████████▉ | 272/305 [1:05:54<07:54, 14.37s/it]
+ 90%|████████▉ | 273/305 [1:06:08<07:37, 14.31s/it]
+ 90%|████████▉ | 274/305 [1:06:22<07:24, 14.34s/it]
+ 90%|█████████ | 275/305 [1:06:37<07:11, 14.39s/it]
+ 90%|█████████ | 276/305 [1:06:51<06:57, 14.39s/it]
+ 91%|█████████ | 277/305 [1:07:06<06:42, 14.38s/it]
+ 91%|█████████ | 278/305 [1:07:20<06:27, 14.34s/it]
+ 91%|█████████▏| 279/305 [1:07:34<06:12, 14.34s/it]
+ 92%|█████████▏| 280/305 [1:07:49<05:58, 14.36s/it]
+ 92%|█████████▏| 281/305 [1:08:03<05:46, 14.44s/it]
+ 92%|█████████▏| 282/305 [1:08:18<05:32, 14.45s/it]
+ 93%|█████████▎| 283/305 [1:08:32<05:19, 14.53s/it]
+ 93%|█████████▎| 284/305 [1:08:47<05:04, 14.51s/it]
+ 93%|█████████▎| 285/305 [1:09:01<04:47, 14.39s/it]
+ 94%|█████████▍| 286/305 [1:09:15<04:33, 14.39s/it]
+ 94%|█████████▍| 287/305 [1:09:30<04:18, 14.34s/it]
+ 94%|█████████▍| 288/305 [1:09:44<04:04, 14.39s/it]
+ 95%|█████████▍| 289/305 [1:09:58<03:50, 14.40s/it]
+ 95%|█████████▌| 290/305 [1:10:13<03:35, 14.38s/it]
+ 95%|█████████▌| 291/305 [1:10:27<03:21, 14.39s/it]
+ 96%|█████████▌| 292/305 [1:10:42<03:07, 14.45s/it]
+ 96%|█████████▌| 293/305 [1:10:56<02:53, 14.45s/it]
+ 96%|█████████▋| 294/305 [1:11:10<02:37, 14.36s/it]
+ 97%|█████████▋| 295/305 [1:11:25<02:24, 14.41s/it]
+ 97%|█████████▋| 296/305 [1:11:39<02:08, 14.30s/it]
+ 97%|█████████▋| 297/305 [1:11:53<01:54, 14.32s/it]
+ 98%|█████████▊| 298/305 [1:12:08<01:40, 14.35s/it]
+ 98%|█████████▊| 299/305 [1:12:22<01:26, 14.36s/it]
+ 98%|█████████▊| 300/305 [1:12:37<01:11, 14.38s/it]
+ 99%|█████████▊| 301/305 [1:12:51<00:57, 14.36s/it]
+ 99%|█████████▉| 302/305 [1:13:05<00:43, 14.39s/it]
+ 99%|█████████▉| 303/305 [1:13:20<00:28, 14.47s/it]
+100%|█████████▉| 304/305 [1:13:34<00:14, 14.43s/it]
+100%|██████████| 305/305 [1:13:43<00:00, 12.59s/it]
+100%|██████████| 305/305 [1:13:43<00:00, 14.50s/it]
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [02:58<08:55, 178.56s/it]
+ 50%|█████     | 2/4 [05:51<05:50, 175.00s/it]
+ 75%|███████▌  | 3/4 [08:41<02:52, 172.72s/it]
+100%|██████████| 4/4 [11:32<00:00, 172.18s/it]
+100%|██████████| 4/4 [11:32<00:00, 173.11s/it]
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [02:56<08:49, 176.48s/it]
+ 50%|█████     | 2/4 [05:47<05:46, 173.42s/it]
+ 75%|███████▌  | 3/4 [08:37<02:51, 171.97s/it]
+100%|██████████| 4/4 [08:45<00:00, 107.08s/it]
+100%|██████████| 4/4 [08:45<00:00, 131.40s/it]
+
+-------------------------------------Iter0--------------------------------------
+Train: final loss=243.889867, aspect loss=70.776437, opinion loss=65.577641, sentiment loss=36.755837, reg loss=351.553299, step=305
+Dev:   final loss=33.903921, aspect loss=8.932286, opinion loss=9.082282, sentiment loss=6.957021, reg loss=4.572630, step=305
+Dev:   aspect f1=0.8399, opinion f1=0.8401, sentiment acc==0.7743, sentiment f1==0.6688, ABSA f1==0.6478,
+Test:  aspect f1=0.8668, opinion f1=0.8189, sentiment acc==0.8062, sentiment f1==0.7266, ABSA f1==0.6974,
+Current Max Metrics Index : 0 Current Min Loss Index : 0 Epoch Time: 73m 43s
+
+  0%|          | 0/305 [00:00<?, ?it/s]
+  0%|          | 1/305 [00:14<1:13:24, 14.49s/it]
+  1%|          | 2/305 [00:28<1:12:33, 14.37s/it]
+  1%|          | 3/305 [00:43<1:12:22, 14.38s/it]
+  1%|▏         | 4/305 [00:57<1:12:19, 14.42s/it]
+  2%|▏         | 5/305 [01:11<1:11:36, 14.32s/it]
+  2%|▏         | 6/305 [01:26<1:11:25, 14.33s/it]
+  2%|▏         | 7/305 [01:40<1:11:30, 14.40s/it]
+  3%|▎         | 8/305 [01:54<1:11:04, 14.36s/it]
+  3%|▎         | 9/305 [02:09<1:10:53, 14.37s/it]
+  3%|▎         | 10/305 [02:23<1:10:45, 14.39s/it]
+  4%|▎         | 11/305 [02:37<1:10:05, 14.31s/it]
+  4%|▍         | 12/305 [02:51<1:09:29, 14.23s/it]
+  4%|▍         | 13/305 [03:06<1:09:28, 14.28s/it]
+  5%|▍         | 14/305 [03:20<1:09:32, 14.34s/it]
+  5%|▍         | 15/305 [03:34<1:08:57, 14.27s/it]
+  5%|▌         | 16/305 [03:49<1:08:44, 14.27s/it]
+  6%|▌         | 17/305 [04:03<1:08:53, 14.35s/it]
+  6%|▌         | 18/305 [04:18<1:08:51, 14.39s/it]
+  6%|▌         | 19/305 [04:32<1:08:21, 14.34s/it]
+  7%|▋         | 20/305 [04:46<1:08:15, 14.37s/it]
+  7%|▋         | 21/305 [05:01<1:08:06, 14.39s/it]
+  7%|▋         | 22/305 [05:15<1:07:48, 14.38s/it]
+  8%|▊         | 23/305 [05:30<1:07:35, 14.38s/it]
+  8%|▊         | 24/305 [05:44<1:07:21, 14.38s/it]
+  8%|▊         | 25/305 [05:59<1:07:21, 14.43s/it]
+  9%|▊         | 26/305 [06:13<1:06:54, 14.39s/it]
+  9%|▉         | 27/305 [06:27<1:06:47, 14.42s/it]
+  9%|▉         | 28/305 [06:42<1:06:25, 14.39s/it]
+ 10%|▉         | 29/305 [06:56<1:06:09, 14.38s/it]
+ 10%|▉         | 30/305 [07:10<1:06:04, 14.42s/it]
+ 10%|█         | 31/305 [07:25<1:05:41, 14.39s/it]
+ 10%|█         | 32/305 [07:39<1:05:18, 14.35s/it]
+ 11%|█         | 33/305 [07:53<1:05:11, 14.38s/it]
+ 11%|█         | 34/305 [08:08<1:05:11, 14.43s/it]
+ 11%|█▏        | 35/305 [08:22<1:04:52, 14.42s/it]
+ 12%|█▏        | 36/305 [08:36<1:04:09, 14.31s/it]
+ 12%|█▏        | 37/305 [08:51<1:03:56, 14.32s/it]
+ 12%|█▏        | 38/305 [09:05<1:03:51, 14.35s/it]
+ 13%|█▎        | 39/305 [09:19<1:03:14, 14.26s/it]
+ 13%|█▎        | 40/305 [09:34<1:03:27, 14.37s/it]
+ 13%|█▎        | 41/305 [09:48<1:03:12, 14.37s/it]
+ 14%|█▍        | 42/305 [10:02<1:02:40, 14.30s/it]
+ 14%|█▍        | 43/305 [10:17<1:03:00, 14.43s/it]
+ 14%|█▍        | 44/305 [10:31<1:02:35, 14.39s/it]
+ 15%|█▍        | 45/305 [10:46<1:02:14, 14.36s/it]
+ 15%|█▌        | 46/305 [11:00<1:01:57, 14.35s/it]
+ 15%|█▌        | 47/305 [11:14<1:01:43, 14.35s/it]
+ 16%|█▌        | 48/305 [11:29<1:01:33, 14.37s/it]
+ 16%|█▌        | 49/305 [11:43<1:01:09, 14.33s/it]
+ 16%|█▋        | 50/305 [11:57<1:00:46, 14.30s/it]
+ 17%|█▋        | 51/305 [12:12<1:00:40, 14.33s/it]
+ 17%|█▋        | 52/305 [12:26<1:00:37, 14.38s/it]
+ 17%|█▋        | 53/305 [12:41<1:00:48, 14.48s/it]
+ 18%|█▊        | 54/305 [12:55<1:00:37, 14.49s/it]
+ 18%|█▊        | 55/305 [13:10<1:00:32, 14.53s/it]
+ 18%|█▊        | 56/305 [13:25<1:00:33, 14.59s/it]
+ 19%|█▊        | 57/305 [13:39<1:00:16, 14.58s/it]
+ 19%|█▉        | 58/305 [13:53<59:13, 14.39s/it]  
+ 19%|█▉        | 59/305 [14:07<58:25, 14.25s/it]
+ 20%|█▉        | 60/305 [14:22<58:30, 14.33s/it]
+ 20%|██        | 61/305 [14:36<58:22, 14.35s/it]
+ 20%|██        | 62/305 [14:51<58:14, 14.38s/it]
+ 21%|██        | 63/305 [15:05<57:32, 14.27s/it]
+ 21%|██        | 64/305 [15:19<57:26, 14.30s/it]
+ 21%|██▏       | 65/305 [15:33<57:20, 14.34s/it]
+ 22%|██▏       | 66/305 [15:48<57:15, 14.37s/it]
+ 22%|██▏       | 67/305 [16:02<56:58, 14.36s/it]
+ 22%|██▏       | 68/305 [16:16<56:30, 14.31s/it]
+ 23%|██▎       | 69/305 [16:31<56:35, 14.39s/it]
+ 23%|██▎       | 70/305 [16:45<56:21, 14.39s/it]
+ 23%|██▎       | 71/305 [16:59<55:42, 14.28s/it]
+ 24%|██▎       | 72/305 [17:14<55:41, 14.34s/it]
+ 24%|██▍       | 73/305 [17:28<55:35, 14.38s/it]
+ 24%|██▍       | 74/305 [17:43<55:24, 14.39s/it]
+ 25%|██▍       | 75/305 [17:57<55:02, 14.36s/it]
+ 25%|██▍       | 76/305 [18:11<54:54, 14.39s/it]
+ 25%|██▌       | 77/305 [18:26<54:27, 14.33s/it]
+ 26%|██▌       | 78/305 [18:40<54:12, 14.33s/it]
+ 26%|██▌       | 79/305 [18:55<54:14, 14.40s/it]
+ 26%|██▌       | 80/305 [19:09<53:54, 14.38s/it]
+ 27%|██▋       | 81/305 [19:23<53:37, 14.36s/it]
+ 27%|██▋       | 82/305 [19:37<53:17, 14.34s/it]
+ 27%|██▋       | 83/305 [19:52<53:03, 14.34s/it]
+ 28%|██▊       | 84/305 [20:06<53:02, 14.40s/it]
+ 28%|██▊       | 85/305 [20:21<52:42, 14.37s/it]
+ 28%|██▊       | 86/305 [20:35<52:29, 14.38s/it]
+ 29%|██▊       | 87/305 [20:50<52:34, 14.47s/it]
+ 29%|██▉       | 88/305 [21:04<52:20, 14.47s/it]
+ 29%|██▉       | 89/305 [21:19<52:22, 14.55s/it]
+ 30%|██▉       | 90/305 [21:33<51:59, 14.51s/it]
+ 30%|██▉       | 91/305 [21:48<51:37, 14.48s/it]
+ 30%|███       | 92/305 [22:02<50:59, 14.36s/it]
+ 30%|███       | 93/305 [22:16<50:43, 14.36s/it]
+ 31%|███       | 94/305 [22:31<50:33, 14.38s/it]
+ 31%|███       | 95/305 [22:45<50:18, 14.37s/it]
+ 31%|███▏      | 96/305 [22:59<50:00, 14.35s/it]
+ 32%|███▏      | 97/305 [23:14<49:58, 14.42s/it]
+ 32%|███▏      | 98/305 [23:28<49:29, 14.35s/it]
+ 32%|███▏      | 99/305 [23:43<49:22, 14.38s/it]
+ 33%|███▎      | 100/305 [23:57<49:09, 14.39s/it]
+ 33%|███▎      | 101/305 [24:11<48:49, 14.36s/it]
+ 33%|███▎      | 102/305 [24:26<48:35, 14.36s/it]
+ 34%|███▍      | 103/305 [24:40<48:28, 14.40s/it]
+ 34%|███▍      | 104/305 [24:54<48:09, 14.38s/it]
+ 34%|███▍      | 105/305 [25:09<48:14, 14.47s/it]
+ 35%|███▍      | 106/305 [25:24<48:00, 14.47s/it]
+ 35%|███▌      | 107/305 [25:38<47:47, 14.48s/it]
+ 35%|███▌      | 108/305 [25:52<47:25, 14.44s/it]
+ 36%|███▌      | 109/305 [26:07<47:16, 14.47s/it]
+ 36%|███▌      | 110/305 [26:22<47:12, 14.53s/it]
+ 36%|███▋      | 111/305 [26:36<46:56, 14.52s/it]
+ 37%|███▋      | 112/305 [26:51<46:45, 14.53s/it]
+ 37%|███▋      | 113/305 [27:05<46:20, 14.48s/it]
+ 37%|███▋      | 114/305 [27:19<46:02, 14.46s/it]
+ 38%|███▊      | 115/305 [27:34<45:49, 14.47s/it]
+ 38%|███▊      | 116/305 [27:48<45:26, 14.43s/it]
+ 38%|███▊      | 117/305 [28:03<45:09, 14.41s/it]
+ 39%|███▊      | 118/305 [28:17<44:43, 14.35s/it]
+ 39%|███▉      | 119/305 [28:31<44:43, 14.43s/it]
+ 39%|███▉      | 120/305 [28:46<44:40, 14.49s/it]
+ 40%|███▉      | 121/305 [29:00<44:18, 14.45s/it]
+ 40%|████      | 122/305 [29:15<44:03, 14.45s/it]
+ 40%|████      | 123/305 [29:29<43:34, 14.37s/it]
+ 41%|████      | 124/305 [29:44<43:23, 14.38s/it]
+ 41%|████      | 125/305 [29:58<43:22, 14.46s/it]
+ 41%|████▏     | 126/305 [30:12<42:38, 14.29s/it]
+ 42%|████▏     | 127/305 [30:26<42:22, 14.28s/it]
+ 42%|████▏     | 128/305 [30:41<42:21, 14.36s/it]
+ 42%|████▏     | 129/305 [30:56<42:23, 14.45s/it]
+ 43%|████▎     | 130/305 [31:10<41:56, 14.38s/it]
+ 43%|████▎     | 131/305 [31:24<41:45, 14.40s/it]
+ 43%|████▎     | 132/305 [31:39<41:38, 14.44s/it]
+ 44%|████▎     | 133/305 [31:53<41:18, 14.41s/it]
+ 44%|████▍     | 134/305 [32:08<41:06, 14.42s/it]
+ 44%|████▍     | 135/305 [32:22<40:58, 14.46s/it]
+ 45%|████▍     | 136/305 [32:36<40:39, 14.43s/it]
+ 45%|████▍     | 137/305 [32:51<40:30, 14.47s/it]
+ 45%|████▌     | 138/305 [33:05<40:17, 14.48s/it]
+ 46%|████▌     | 139/305 [33:20<39:52, 14.42s/it]
+ 46%|████▌     | 140/305 [33:34<39:37, 14.41s/it]
+ 46%|████▌     | 141/305 [33:49<39:23, 14.41s/it]
+ 47%|████▋     | 142/305 [34:03<39:02, 14.37s/it]
+ 47%|████▋     | 143/305 [34:17<38:39, 14.32s/it]
+ 47%|████▋     | 144/305 [34:31<38:21, 14.30s/it]
+ 48%|████▊     | 145/305 [34:45<38:01, 14.26s/it]
+ 48%|████▊     | 146/305 [35:00<37:53, 14.30s/it]
+ 48%|████▊     | 147/305 [35:14<37:54, 14.39s/it]
+ 49%|████▊     | 148/305 [35:29<37:46, 14.44s/it]
+ 49%|████▉     | 149/305 [35:44<38:08, 14.67s/it]
+ 49%|████▉     | 150/305 [35:59<37:49, 14.64s/it]
+ 50%|████▉     | 151/305 [36:13<37:18, 14.54s/it]
+ 50%|████▉     | 152/305 [36:27<36:42, 14.39s/it]
+ 50%|█████     | 153/305 [36:41<36:22, 14.36s/it]
+ 50%|█████     | 154/305 [36:55<35:48, 14.23s/it]
+ 51%|█████     | 155/305 [37:10<35:37, 14.25s/it]
+ 51%|█████     | 156/305 [37:24<35:25, 14.26s/it]
+ 51%|█████▏    | 157/305 [37:38<35:14, 14.28s/it]
+ 52%|█████▏    | 158/305 [37:53<35:00, 14.29s/it]
+ 52%|█████▏    | 159/305 [38:07<34:44, 14.28s/it]
+ 52%|█████▏    | 160/305 [38:21<34:35, 14.31s/it]
+ 53%|█████▎    | 161/305 [38:36<34:20, 14.31s/it]
+ 53%|█████▎    | 162/305 [38:50<34:13, 14.36s/it]
+ 53%|█████▎    | 163/305 [39:04<34:00, 14.37s/it]
+ 54%|█████▍    | 164/305 [39:19<33:53, 14.42s/it]
+ 54%|█████▍    | 165/305 [39:33<33:38, 14.42s/it]
+ 54%|█████▍    | 166/305 [39:48<33:21, 14.40s/it]
+ 55%|█████▍    | 167/305 [40:02<33:06, 14.40s/it]
+ 55%|█████▌    | 168/305 [40:16<32:50, 14.38s/it]
+ 55%|█████▌    | 169/305 [40:31<32:35, 14.38s/it]
+ 56%|█████▌    | 170/305 [40:45<32:28, 14.43s/it]
+ 56%|█████▌    | 171/305 [40:59<32:00, 14.33s/it]
+ 56%|█████▋    | 172/305 [41:14<31:56, 14.41s/it]
+ 57%|█████▋    | 173/305 [41:28<31:42, 14.41s/it]
+ 57%|█████▋    | 174/305 [41:43<31:23, 14.38s/it]
+ 57%|█████▋    | 175/305 [41:57<31:13, 14.41s/it]
+ 58%|█████▊    | 176/305 [42:11<30:52, 14.36s/it]
+ 58%|█████▊    | 177/305 [42:26<30:36, 14.34s/it]
+ 58%|█████▊    | 178/305 [42:40<30:12, 14.27s/it]
+ 59%|█████▊    | 179/305 [42:54<30:02, 14.31s/it]
+ 59%|█████▉    | 180/305 [43:09<29:57, 14.38s/it]
+ 59%|█████▉    | 181/305 [43:23<29:43, 14.38s/it]
+ 60%|█████▉    | 182/305 [43:38<29:38, 14.46s/it]
+ 60%|██████    | 183/305 [43:52<29:26, 14.48s/it]
+ 60%|██████    | 184/305 [44:07<29:06, 14.43s/it]
+ 61%|██████    | 185/305 [44:21<28:52, 14.43s/it]
+ 61%|██████    | 186/305 [44:36<28:35, 14.41s/it]
+ 61%|██████▏   | 187/305 [44:50<28:19, 14.41s/it]
+ 62%|██████▏   | 188/305 [45:04<28:01, 14.37s/it]
+ 62%|██████▏   | 189/305 [45:19<27:44, 14.35s/it]
+ 62%|██████▏   | 190/305 [45:33<27:25, 14.31s/it]
+ 63%|██████▎   | 191/305 [45:47<27:14, 14.34s/it]
+ 63%|██████▎   | 192/305 [46:02<27:02, 14.36s/it]
+ 63%|██████▎   | 193/305 [46:16<26:43, 14.31s/it]
+ 64%|██████▎   | 194/305 [46:30<26:34, 14.37s/it]
+ 64%|██████▍   | 195/305 [46:45<26:21, 14.38s/it]
+ 64%|██████▍   | 196/305 [46:59<26:07, 14.38s/it]
+ 65%|██████▍   | 197/305 [47:13<25:41, 14.27s/it]
+ 65%|██████▍   | 198/305 [47:28<25:36, 14.36s/it]
+ 65%|██████▌   | 199/305 [47:42<25:22, 14.36s/it]
+ 66%|██████▌   | 200/305 [47:56<25:12, 14.41s/it]
+ 66%|██████▌   | 201/305 [48:11<25:03, 14.45s/it]
+ 66%|██████▌   | 202/305 [48:25<24:48, 14.45s/it]
+ 67%|██████▋   | 203/305 [48:40<24:33, 14.44s/it]
+ 67%|██████▋   | 204/305 [48:54<24:19, 14.45s/it]
+ 67%|██████▋   | 205/305 [49:11<25:04, 15.05s/it]
+ 68%|██████▊   | 206/305 [49:28<25:56, 15.72s/it]
+ 68%|██████▊   | 207/305 [49:45<26:24, 16.17s/it]
+ 68%|██████▊   | 208/305 [50:02<26:33, 16.43s/it]
+ 69%|██████▊   | 209/305 [50:20<26:48, 16.76s/it]
+ 69%|██████▉   | 210/305 [50:37<26:39, 16.83s/it]
+ 69%|██████▉   | 211/305 [50:54<26:21, 16.82s/it]
+ 70%|██████▉   | 212/305 [51:11<26:09, 16.88s/it]
+ 70%|██████▉   | 213/305 [51:27<25:37, 16.72s/it]
+ 70%|███████   | 214/305 [51:44<25:19, 16.69s/it]
+ 70%|███████   | 215/305 [52:00<24:52, 16.58s/it]
+ 71%|███████   | 216/305 [52:16<24:24, 16.46s/it]
+ 71%|███████   | 217/305 [52:32<23:56, 16.33s/it]
+ 71%|███████▏  | 218/305 [52:48<23:28, 16.19s/it]
+ 72%|███████▏  | 219/305 [53:05<23:19, 16.27s/it]
+ 72%|███████▏  | 220/305 [53:21<23:03, 16.28s/it]
+ 72%|███████▏  | 221/305 [53:37<22:47, 16.28s/it]
+ 73%|███████▎  | 222/305 [53:53<22:28, 16.25s/it]
+ 73%|███████▎  | 223/305 [54:09<22:07, 16.19s/it]
+ 73%|███████▎  | 224/305 [54:25<21:47, 16.14s/it]
+ 74%|███████▍  | 225/305 [54:41<21:23, 16.04s/it]
+ 74%|███████▍  | 226/305 [54:57<21:04, 16.01s/it]
+ 74%|███████▍  | 227/305 [55:13<20:52, 16.06s/it]
+ 75%|███████▍  | 228/305 [55:29<20:26, 15.93s/it]
+ 75%|███████▌  | 229/305 [55:45<20:05, 15.86s/it]
+ 75%|███████▌  | 230/305 [55:59<19:22, 15.50s/it]
+ 76%|███████▌  | 231/305 [56:14<19:00, 15.41s/it]
+ 76%|███████▌  | 232/305 [56:29<18:33, 15.25s/it]
+ 76%|███████▋  | 233/305 [56:44<18:03, 15.04s/it]
+ 77%|███████▋  | 234/305 [56:58<17:35, 14.86s/it]
+ 77%|███████▋  | 235/305 [57:13<17:07, 14.67s/it]
+ 77%|███████▋  | 236/305 [57:27<16:39, 14.49s/it]
+ 78%|███████▊  | 237/305 [57:41<16:27, 14.53s/it]
+ 78%|███████▊  | 238/305 [57:56<16:16, 14.58s/it]
+ 78%|███████▊  | 239/305 [58:11<16:07, 14.66s/it]
+ 79%|███████▊  | 240/305 [58:25<15:52, 14.65s/it]
+ 79%|███████▉  | 241/305 [58:40<15:28, 14.50s/it]
+ 79%|███████▉  | 242/305 [58:54<15:18, 14.57s/it]
+ 80%|███████▉  | 243/305 [59:10<15:14, 14.76s/it]
+ 80%|████████  | 244/305 [59:24<14:58, 14.73s/it]
+ 80%|████████  | 245/305 [59:38<14:35, 14.59s/it]
+ 81%|████████  | 246/305 [59:54<14:30, 14.75s/it]
+ 81%|████████  | 247/305 [1:00:09<14:24, 14.90s/it]
+ 81%|████████▏ | 248/305 [1:00:24<14:06, 14.86s/it]
+ 82%|████████▏ | 249/305 [1:00:38<13:47, 14.78s/it]
+ 82%|████████▏ | 250/305 [1:00:53<13:29, 14.71s/it]
+ 82%|████████▏ | 251/305 [1:01:07<13:13, 14.70s/it]
+ 83%|████████▎ | 252/305 [1:01:22<12:51, 14.56s/it]
+ 83%|████████▎ | 253/305 [1:01:36<12:36, 14.54s/it]
+ 83%|████████▎ | 254/305 [1:01:50<12:18, 14.48s/it]
+ 84%|████████▎ | 255/305 [1:02:05<12:06, 14.53s/it]
+ 84%|████████▍ | 256/305 [1:02:19<11:48, 14.47s/it]
+ 84%|████████▍ | 257/305 [1:02:34<11:37, 14.52s/it]
+ 85%|████████▍ | 258/305 [1:02:49<11:25, 14.58s/it]
+ 85%|████████▍ | 259/305 [1:03:04<11:17, 14.72s/it]
+ 85%|████████▌ | 260/305 [1:03:20<11:19, 15.09s/it]
+ 86%|████████▌ | 261/305 [1:03:35<11:06, 15.14s/it]
+ 86%|████████▌ | 262/305 [1:03:50<10:53, 15.20s/it]
+ 86%|████████▌ | 263/305 [1:04:05<10:33, 15.07s/it]
+ 87%|████████▋ | 264/305 [1:04:20<10:14, 14.99s/it]
+ 87%|████████▋ | 265/305 [1:04:34<09:53, 14.83s/it]
+ 87%|████████▋ | 266/305 [1:04:49<09:34, 14.73s/it]
+ 88%|████████▊ | 267/305 [1:05:03<09:15, 14.61s/it]
+ 88%|████████▊ | 268/305 [1:05:18<08:59, 14.57s/it]
+ 88%|████████▊ | 269/305 [1:05:32<08:43, 14.54s/it]
+ 89%|████████▊ | 270/305 [1:05:46<08:26, 14.46s/it]
+ 89%|████████▉ | 271/305 [1:06:01<08:15, 14.58s/it]
+ 89%|████████▉ | 272/305 [1:06:16<07:59, 14.54s/it]
+ 90%|████████▉ | 273/305 [1:06:30<07:45, 14.54s/it]
+ 90%|████████▉ | 274/305 [1:06:45<07:33, 14.62s/it]
+ 90%|█████████ | 275/305 [1:07:00<07:18, 14.61s/it]
+ 90%|█████████ | 276/305 [1:07:14<07:02, 14.58s/it]
+ 91%|█████████ | 277/305 [1:07:28<06:45, 14.47s/it]
+ 91%|█████████ | 278/305 [1:07:43<06:32, 14.54s/it]
+ 91%|█████████▏| 279/305 [1:07:58<06:18, 14.55s/it]
+ 92%|█████████▏| 280/305 [1:08:12<06:04, 14.59s/it]
+ 92%|█████████▏| 281/305 [1:08:27<05:52, 14.68s/it]
+ 92%|█████████▏| 282/305 [1:08:42<05:35, 14.60s/it]
+ 93%|█████████▎| 283/305 [1:08:56<05:19, 14.54s/it]
+ 93%|█████████▎| 284/305 [1:09:10<05:03, 14.46s/it]
+ 93%|█████████▎| 285/305 [1:09:25<04:50, 14.51s/it]
+ 94%|█████████▍| 286/305 [1:09:40<04:37, 14.59s/it]
+ 94%|█████████▍| 287/305 [1:09:54<04:21, 14.53s/it]
+ 94%|█████████▍| 288/305 [1:10:09<04:06, 14.51s/it]
+ 95%|█████████▍| 289/305 [1:10:23<03:51, 14.46s/it]
+ 95%|█████████▌| 290/305 [1:10:38<03:37, 14.48s/it]
+ 95%|█████████▌| 291/305 [1:10:52<03:23, 14.57s/it]
+ 96%|█████████▌| 292/305 [1:11:07<03:09, 14.60s/it]
+ 96%|█████████▌| 293/305 [1:11:21<02:54, 14.57s/it]
+ 96%|█████████▋| 294/305 [1:11:36<02:40, 14.57s/it]
+ 97%|█████████▋| 295/305 [1:11:51<02:25, 14.56s/it]
+ 97%|█████████▋| 296/305 [1:12:05<02:10, 14.55s/it]
+ 97%|█████████▋| 297/305 [1:12:19<01:55, 14.50s/it]
+ 98%|█████████▊| 298/305 [1:12:34<01:41, 14.49s/it]
+ 98%|█████████▊| 299/305 [1:12:49<01:27, 14.57s/it]
+ 98%|█████████▊| 300/305 [1:13:03<01:12, 14.50s/it]
+ 99%|█████████▊| 301/305 [1:13:17<00:57, 14.48s/it]
+ 99%|█████████▉| 302/305 [1:13:32<00:43, 14.45s/it]
+ 99%|█████████▉| 303/305 [1:13:46<00:28, 14.50s/it]
+100%|█████████▉| 304/305 [1:14:01<00:14, 14.54s/it]
+100%|██████████| 305/305 [1:14:09<00:00, 12.66s/it]
+100%|██████████| 305/305 [1:14:09<00:00, 14.59s/it]
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [02:57<08:52, 177.45s/it]
+ 50%|█████     | 2/4 [05:54<05:54, 177.28s/it]
+ 75%|███████▌  | 3/4 [08:45<02:54, 174.33s/it]
+100%|██████████| 4/4 [11:36<00:00, 173.23s/it]
+100%|██████████| 4/4 [11:36<00:00, 174.24s/it]
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [02:54<08:42, 174.26s/it]
+ 50%|█████     | 2/4 [05:47<05:47, 173.61s/it]
+ 75%|███████▌  | 3/4 [08:40<02:53, 173.52s/it]
+100%|██████████| 4/4 [08:48<00:00, 108.03s/it]
+100%|██████████| 4/4 [08:48<00:00, 132.11s/it]
+
+-------------------------------------Iter1--------------------------------------
+Train: final loss=78.297277, aspect loss=18.026711, opinion loss=20.884924, sentiment loss=21.358735, reg loss=19.643967, step=610
+Dev:   final loss=36.052281, aspect loss=10.859634, opinion loss=7.485514, sentiment loss=6.847442, reg loss=5.756389, step=610
+Dev:   aspect f1=0.7969, opinion f1=0.8579, sentiment acc==0.7754, sentiment f1==0.7011, ABSA f1==0.6148,
+Test:  aspect f1=0.7940, opinion f1=0.8574, sentiment acc==0.8574, sentiment f1==0.7881, ABSA f1==0.6787,
+Current Max Metrics Index : 0 Current Min Loss Index : 0 Epoch Time: 74m 10s
+
+  0%|          | 0/305 [00:00<?, ?it/s]
+  0%|          | 1/305 [00:14<1:13:39, 14.54s/it]
+  1%|          | 2/305 [00:29<1:13:36, 14.58s/it]
+  1%|          | 3/305 [00:43<1:13:39, 14.64s/it]
+  1%|▏         | 4/305 [00:58<1:12:36, 14.47s/it]
+  2%|▏         | 5/305 [01:13<1:13:12, 14.64s/it]
+  2%|▏         | 6/305 [01:27<1:13:14, 14.70s/it]
+  2%|▏         | 7/305 [01:42<1:12:23, 14.57s/it]
+  3%|▎         | 8/305 [01:56<1:12:17, 14.60s/it]
+  3%|▎         | 9/305 [02:11<1:11:31, 14.50s/it]
+  3%|▎         | 10/305 [02:25<1:10:51, 14.41s/it]
+  4%|▎         | 11/305 [02:40<1:11:03, 14.50s/it]
+  4%|▍         | 12/305 [02:54<1:10:56, 14.53s/it]
+  4%|▍         | 13/305 [03:10<1:12:32, 14.90s/it]
+  5%|▍         | 14/305 [03:26<1:14:21, 15.33s/it]
+  5%|▍         | 15/305 [03:43<1:16:00, 15.73s/it]
+  5%|▌         | 16/305 [03:59<1:16:13, 15.82s/it]
+  6%|▌         | 17/305 [04:15<1:16:49, 16.01s/it]
+  6%|▌         | 18/305 [04:32<1:16:56, 16.08s/it]
+  6%|▌         | 19/305 [04:48<1:17:09, 16.19s/it]
+  7%|▋         | 20/305 [05:04<1:16:48, 16.17s/it]
+  7%|▋         | 21/305 [05:21<1:16:56, 16.25s/it]
+  7%|▋         | 22/305 [05:37<1:16:53, 16.30s/it]
+  8%|▊         | 23/305 [05:53<1:16:20, 16.24s/it]
+  8%|▊         | 24/305 [06:09<1:16:08, 16.26s/it]
+  8%|▊         | 25/305 [06:26<1:16:00, 16.29s/it]
+  9%|▊         | 26/305 [06:43<1:16:35, 16.47s/it]
+  9%|▉         | 27/305 [06:59<1:16:12, 16.45s/it]
+  9%|▉         | 28/305 [07:16<1:16:01, 16.47s/it]
+ 10%|▉         | 29/305 [07:32<1:15:38, 16.44s/it]
+ 10%|▉         | 30/305 [07:48<1:15:01, 16.37s/it]
+ 10%|█         | 31/305 [08:04<1:14:37, 16.34s/it]
+ 10%|█         | 32/305 [08:21<1:14:58, 16.48s/it]
+ 11%|█         | 33/305 [08:38<1:14:47, 16.50s/it]
+ 11%|█         | 34/305 [08:54<1:14:27, 16.48s/it]
+ 11%|█▏        | 35/305 [09:11<1:14:43, 16.61s/it]
+ 12%|█▏        | 36/305 [09:28<1:14:20, 16.58s/it]
+ 12%|█▏        | 37/305 [09:44<1:13:58, 16.56s/it]
+ 12%|█▏        | 38/305 [10:01<1:14:12, 16.68s/it]
+ 13%|█▎        | 39/305 [10:18<1:14:01, 16.70s/it]
+ 13%|█▎        | 40/305 [10:34<1:13:11, 16.57s/it]
+ 13%|█▎        | 41/305 [10:51<1:13:12, 16.64s/it]
+ 14%|█▍        | 42/305 [11:08<1:13:03, 16.67s/it]
+ 14%|█▍        | 43/305 [11:24<1:12:59, 16.71s/it]
+ 14%|█▍        | 44/305 [11:41<1:13:01, 16.79s/it]
+ 15%|█▍        | 45/305 [11:58<1:12:54, 16.82s/it]
+ 15%|█▌        | 46/305 [12:15<1:12:07, 16.71s/it]
+ 15%|█▌        | 47/305 [12:32<1:12:01, 16.75s/it]
+ 16%|█▌        | 48/305 [12:48<1:11:06, 16.60s/it]
+ 16%|█▌        | 49/305 [13:04<1:10:08, 16.44s/it]
+ 16%|█▋        | 50/305 [13:21<1:10:11, 16.52s/it]
+ 17%|█▋        | 51/305 [13:37<1:09:59, 16.53s/it]
+ 17%|█▋        | 52/305 [13:54<1:10:04, 16.62s/it]
+ 17%|█▋        | 53/305 [14:11<1:10:05, 16.69s/it]
+ 18%|█▊        | 54/305 [14:27<1:09:13, 16.55s/it]
+ 18%|█▊        | 55/305 [14:44<1:09:15, 16.62s/it]
+ 18%|█▊        | 56/305 [15:00<1:08:41, 16.55s/it]
+ 19%|█▊        | 57/305 [15:17<1:08:30, 16.57s/it]
+ 19%|█▉        | 58/305 [15:33<1:08:01, 16.52s/it]
+ 19%|█▉        | 59/305 [15:49<1:06:51, 16.31s/it]
+ 20%|█▉        | 60/305 [16:06<1:07:12, 16.46s/it]
+ 20%|██        | 61/305 [16:22<1:07:04, 16.49s/it]
+ 20%|██        | 62/305 [16:38<1:06:09, 16.34s/it]
+ 21%|██        | 63/305 [16:54<1:05:23, 16.21s/it]
+ 21%|██        | 64/305 [17:10<1:04:58, 16.18s/it]
+ 21%|██▏       | 65/305 [17:27<1:04:38, 16.16s/it]
+ 22%|██▏       | 66/305 [17:43<1:04:13, 16.12s/it]
+ 22%|██▏       | 67/305 [17:59<1:03:56, 16.12s/it]
+ 22%|██▏       | 68/305 [18:15<1:03:48, 16.16s/it]
+ 23%|██▎       | 69/305 [18:31<1:03:36, 16.17s/it]
+ 23%|██▎       | 70/305 [18:47<1:02:33, 15.97s/it]
+ 23%|██▎       | 71/305 [19:03<1:02:07, 15.93s/it]
+ 24%|██▎       | 72/305 [19:18<1:01:11, 15.76s/it]
+ 24%|██▍       | 73/305 [19:33<1:00:19, 15.60s/it]
+ 24%|██▍       | 74/305 [19:49<1:00:39, 15.75s/it]
+ 25%|██▍       | 75/305 [20:04<59:31, 15.53s/it]  
+ 25%|██▍       | 76/305 [20:19<58:23, 15.30s/it]
+ 25%|██▌       | 77/305 [20:33<57:13, 15.06s/it]
+ 26%|██▌       | 78/305 [20:48<56:29, 14.93s/it]
+ 26%|██▌       | 79/305 [21:03<55:47, 14.81s/it]
+ 26%|██▌       | 80/305 [21:17<55:04, 14.68s/it]
+ 27%|██▋       | 81/305 [21:32<54:50, 14.69s/it]
+ 27%|██▋       | 82/305 [21:46<54:29, 14.66s/it]
+ 27%|██▋       | 83/305 [22:01<54:13, 14.66s/it]
+ 28%|██▊       | 84/305 [22:16<54:08, 14.70s/it]
+ 28%|██▊       | 85/305 [22:30<53:21, 14.55s/it]
+ 28%|██▊       | 86/305 [22:45<53:17, 14.60s/it]
+ 29%|██▊       | 87/305 [22:59<53:07, 14.62s/it]
+ 29%|██▉       | 88/305 [23:14<52:48, 14.60s/it]
+ 29%|██▉       | 89/305 [23:28<52:18, 14.53s/it]
+ 30%|██▉       | 90/305 [23:43<51:53, 14.48s/it]
+ 30%|██▉       | 91/305 [23:57<51:44, 14.51s/it]
+ 30%|███       | 92/305 [24:12<51:34, 14.53s/it]
+ 30%|███       | 93/305 [24:26<51:28, 14.57s/it]
+ 31%|███       | 94/305 [24:41<51:18, 14.59s/it]
+ 31%|███       | 95/305 [24:56<51:16, 14.65s/it]
+ 31%|███▏      | 96/305 [25:11<51:05, 14.67s/it]
+ 32%|███▏      | 97/305 [25:25<50:38, 14.61s/it]
+ 32%|███▏      | 98/305 [25:40<50:41, 14.69s/it]
+ 32%|███▏      | 99/305 [25:54<49:57, 14.55s/it]
+ 33%|███▎      | 100/305 [26:09<49:49, 14.58s/it]
+ 33%|███▎      | 101/305 [26:23<49:31, 14.56s/it]
+ 33%|███▎      | 102/305 [26:38<49:05, 14.51s/it]
+ 34%|███▍      | 103/305 [26:52<48:53, 14.52s/it]
+ 34%|███▍      | 104/305 [27:07<48:44, 14.55s/it]
+ 34%|███▍      | 105/305 [27:21<48:26, 14.53s/it]
+ 35%|███▍      | 106/305 [27:36<48:16, 14.56s/it]
+ 35%|███▌      | 107/305 [27:51<48:02, 14.56s/it]
+ 35%|███▌      | 108/305 [28:05<47:50, 14.57s/it]
+ 36%|███▌      | 109/305 [28:20<47:38, 14.59s/it]
+ 36%|███▌      | 110/305 [28:34<47:26, 14.60s/it]
+ 36%|███▋      | 111/305 [28:49<47:08, 14.58s/it]
+ 37%|███▋      | 112/305 [29:04<46:57, 14.60s/it]
+ 37%|███▋      | 113/305 [29:18<46:35, 14.56s/it]
+ 37%|███▋      | 114/305 [29:32<46:00, 14.45s/it]
+ 38%|███▊      | 115/305 [29:47<45:50, 14.48s/it]
+ 38%|███▊      | 116/305 [30:01<45:37, 14.49s/it]
+ 38%|███▊      | 117/305 [30:16<45:32, 14.53s/it]
+ 39%|███▊      | 118/305 [30:30<45:12, 14.50s/it]
+ 39%|███▉      | 119/305 [30:45<45:15, 14.60s/it]
+ 39%|███▉      | 120/305 [31:00<45:25, 14.73s/it]
+ 40%|███▉      | 121/305 [31:15<45:02, 14.69s/it]
+ 40%|████      | 122/305 [31:29<44:30, 14.60s/it]
+ 40%|████      | 123/305 [31:44<44:10, 14.56s/it]
+ 41%|████      | 124/305 [31:58<43:44, 14.50s/it]
+ 41%|████      | 125/305 [32:12<43:24, 14.47s/it]
+ 41%|████▏     | 126/305 [32:27<43:17, 14.51s/it]
+ 42%|████▏     | 127/305 [32:41<42:53, 14.46s/it]
+ 42%|████▏     | 128/305 [32:56<42:48, 14.51s/it]
+ 42%|████▏     | 129/305 [33:11<42:33, 14.51s/it]
+ 43%|████▎     | 130/305 [33:25<42:18, 14.50s/it]
+ 43%|████▎     | 131/305 [33:39<41:57, 14.47s/it]
+ 43%|████▎     | 132/305 [33:54<41:41, 14.46s/it]
+ 44%|████▎     | 133/305 [34:08<41:26, 14.46s/it]
+ 44%|████▍     | 134/305 [34:23<41:05, 14.42s/it]
+ 44%|████▍     | 135/305 [34:37<40:56, 14.45s/it]
+ 45%|████▍     | 136/305 [34:51<40:36, 14.42s/it]
+ 45%|████▍     | 137/305 [35:06<40:13, 14.37s/it]
+ 45%|████▌     | 138/305 [35:20<40:07, 14.41s/it]
+ 46%|████▌     | 139/305 [35:35<39:56, 14.43s/it]
+ 46%|████▌     | 140/305 [35:49<39:53, 14.51s/it]
+ 46%|████▌     | 141/305 [36:04<39:35, 14.49s/it]
+ 47%|████▋     | 142/305 [36:18<39:24, 14.51s/it]
+ 47%|████▋     | 143/305 [36:33<39:20, 14.57s/it]
+ 47%|████▋     | 144/305 [36:48<39:03, 14.56s/it]
+ 48%|████▊     | 145/305 [37:02<38:36, 14.48s/it]
+ 48%|████▊     | 146/305 [37:17<38:37, 14.58s/it]
+ 48%|████▊     | 147/305 [37:31<38:23, 14.58s/it]
+ 49%|████▊     | 148/305 [37:46<38:00, 14.53s/it]
+ 49%|████▉     | 149/305 [38:00<37:27, 14.41s/it]
+ 49%|████▉     | 150/305 [38:14<37:15, 14.42s/it]
+ 50%|████▉     | 151/305 [38:29<37:00, 14.42s/it]
+ 50%|████▉     | 152/305 [38:43<36:54, 14.47s/it]
+ 50%|█████     | 153/305 [38:59<37:46, 14.91s/it]
+ 50%|█████     | 154/305 [39:16<38:37, 15.35s/it]
+ 51%|█████     | 155/305 [39:32<39:20, 15.73s/it]
+ 51%|█████     | 156/305 [39:49<39:52, 16.06s/it]
+ 51%|█████▏    | 157/305 [40:06<39:59, 16.21s/it]
+ 52%|█████▏    | 158/305 [40:22<39:57, 16.31s/it]
+ 52%|█████▏    | 159/305 [40:39<39:54, 16.40s/it]
+ 52%|█████▏    | 160/305 [40:56<39:59, 16.55s/it]
+ 53%|█████▎    | 161/305 [41:12<39:31, 16.47s/it]
+ 53%|█████▎    | 162/305 [41:29<39:36, 16.62s/it]
+ 53%|█████▎    | 163/305 [41:46<39:29, 16.68s/it]
+ 54%|█████▍    | 164/305 [42:02<39:09, 16.66s/it]
+ 54%|█████▍    | 165/305 [42:19<38:50, 16.65s/it]
+ 54%|█████▍    | 166/305 [42:36<38:37, 16.67s/it]
+ 55%|█████▍    | 167/305 [42:53<38:25, 16.71s/it]
+ 55%|█████▌    | 168/305 [43:09<38:18, 16.78s/it]
+ 55%|█████▌    | 169/305 [43:26<37:54, 16.72s/it]
+ 56%|█████▌    | 170/305 [43:43<37:29, 16.66s/it]
+ 56%|█████▌    | 171/305 [44:00<37:24, 16.75s/it]
+ 56%|█████▋    | 172/305 [44:16<36:57, 16.68s/it]
+ 57%|█████▋    | 173/305 [44:33<36:39, 16.67s/it]
+ 57%|█████▋    | 174/305 [44:49<36:04, 16.52s/it]
+ 57%|█████▋    | 175/305 [45:05<35:45, 16.50s/it]
+ 58%|█████▊    | 176/305 [45:21<35:15, 16.40s/it]
+ 58%|█████▊    | 177/305 [45:38<34:55, 16.37s/it]
+ 58%|█████▊    | 178/305 [45:54<34:34, 16.33s/it]
+ 59%|█████▊    | 179/305 [46:11<34:22, 16.37s/it]
+ 59%|█████▉    | 180/305 [46:27<34:01, 16.33s/it]
+ 59%|█████▉    | 181/305 [46:43<33:41, 16.30s/it]
+ 60%|█████▉    | 182/305 [46:59<33:23, 16.29s/it]
+ 60%|██████    | 183/305 [47:15<33:05, 16.27s/it]
+ 60%|██████    | 184/305 [47:31<32:37, 16.18s/it]
+ 61%|██████    | 185/305 [47:47<32:17, 16.15s/it]
+ 61%|██████    | 186/305 [48:04<32:02, 16.16s/it]
+ 61%|██████▏   | 187/305 [48:20<31:49, 16.18s/it]
+ 62%|██████▏   | 188/305 [48:36<31:40, 16.25s/it]
+ 62%|██████▏   | 189/305 [48:52<31:21, 16.22s/it]
+ 62%|██████▏   | 190/305 [49:09<31:00, 16.18s/it]
+ 63%|██████▎   | 191/305 [49:25<30:46, 16.20s/it]
+ 63%|██████▎   | 192/305 [49:41<30:30, 16.20s/it]
+ 63%|██████▎   | 193/305 [49:57<30:08, 16.15s/it]
+ 64%|██████▎   | 194/305 [50:13<29:45, 16.09s/it]
+ 64%|██████▍   | 195/305 [50:29<29:29, 16.09s/it]
+ 64%|██████▍   | 196/305 [50:44<28:35, 15.74s/it]
+ 65%|██████▍   | 197/305 [51:00<28:13, 15.68s/it]
+ 65%|██████▍   | 198/305 [51:14<27:31, 15.44s/it]
+ 65%|██████▌   | 199/305 [51:29<26:45, 15.15s/it]
+ 66%|██████▌   | 200/305 [51:43<26:04, 14.90s/it]
+ 66%|██████▌   | 201/305 [51:59<26:02, 15.02s/it]
+ 66%|██████▌   | 202/305 [52:13<25:35, 14.91s/it]
+ 67%|██████▋   | 203/305 [52:28<25:11, 14.82s/it]
+ 67%|██████▋   | 204/305 [52:42<24:43, 14.69s/it]
+ 67%|██████▋   | 205/305 [52:57<24:19, 14.60s/it]
+ 68%|██████▊   | 206/305 [53:11<23:57, 14.52s/it]
+ 68%|██████▊   | 207/305 [53:25<23:43, 14.52s/it]
+ 68%|██████▊   | 208/305 [53:40<23:31, 14.56s/it]
+ 69%|██████▊   | 209/305 [53:54<23:14, 14.52s/it]
+ 69%|██████▉   | 210/305 [54:09<23:01, 14.54s/it]
+ 69%|██████▉   | 211/305 [54:23<22:43, 14.50s/it]
+ 70%|██████▉   | 212/305 [54:38<22:26, 14.48s/it]
+ 70%|██████▉   | 213/305 [54:52<22:03, 14.38s/it]
+ 70%|███████   | 214/305 [55:07<21:57, 14.47s/it]
+ 70%|███████   | 215/305 [55:21<21:49, 14.55s/it]
+ 71%|███████   | 216/305 [55:36<21:36, 14.57s/it]
+ 71%|███████   | 217/305 [55:51<21:20, 14.55s/it]
+ 71%|███████▏  | 218/305 [56:05<21:04, 14.54s/it]
+ 72%|███████▏  | 219/305 [56:19<20:45, 14.48s/it]
+ 72%|███████▏  | 220/305 [56:34<20:20, 14.36s/it]
+ 72%|███████▏  | 221/305 [56:47<19:55, 14.24s/it]
+ 73%|███████▎  | 222/305 [57:02<19:46, 14.30s/it]
+ 73%|███████▎  | 223/305 [57:17<19:39, 14.39s/it]
+ 73%|███████▎  | 224/305 [57:31<19:29, 14.43s/it]
+ 74%|███████▍  | 225/305 [57:46<19:18, 14.48s/it]
+ 74%|███████▍  | 226/305 [58:00<19:06, 14.51s/it]
+ 74%|███████▍  | 227/305 [58:15<18:47, 14.45s/it]
+ 75%|███████▍  | 228/305 [58:29<18:33, 14.46s/it]
+ 75%|███████▌  | 229/305 [58:44<18:20, 14.48s/it]
+ 75%|███████▌  | 230/305 [58:58<18:03, 14.45s/it]
+ 76%|███████▌  | 231/305 [59:12<17:46, 14.42s/it]
+ 76%|███████▌  | 232/305 [59:26<17:26, 14.34s/it]
+ 76%|███████▋  | 233/305 [59:40<17:04, 14.23s/it]
+ 77%|███████▋  | 234/305 [59:55<17:00, 14.37s/it]
+ 77%|███████▋  | 235/305 [1:00:10<16:49, 14.42s/it]
+ 77%|███████▋  | 236/305 [1:00:24<16:38, 14.47s/it]
+ 78%|███████▊  | 237/305 [1:00:38<16:18, 14.39s/it]
+ 78%|███████▊  | 238/305 [1:00:53<16:06, 14.43s/it]
+ 78%|███████▊  | 239/305 [1:01:08<15:55, 14.48s/it]
+ 79%|███████▊  | 240/305 [1:01:22<15:38, 14.44s/it]
+ 79%|███████▉  | 241/305 [1:01:37<15:28, 14.51s/it]
+ 79%|███████▉  | 242/305 [1:01:51<15:15, 14.54s/it]
+ 80%|███████▉  | 243/305 [1:02:06<15:01, 14.53s/it]
+ 80%|████████  | 244/305 [1:02:20<14:48, 14.56s/it]
+ 80%|████████  | 245/305 [1:02:35<14:33, 14.55s/it]
+ 81%|████████  | 246/305 [1:02:49<14:18, 14.54s/it]
+ 81%|████████  | 247/305 [1:03:04<14:03, 14.54s/it]
+ 81%|████████▏ | 248/305 [1:03:19<13:53, 14.63s/it]
+ 82%|████████▏ | 249/305 [1:03:33<13:40, 14.66s/it]
+ 82%|████████▏ | 250/305 [1:03:48<13:23, 14.61s/it]
+ 82%|████████▏ | 251/305 [1:04:03<13:07, 14.59s/it]
+ 83%|████████▎ | 252/305 [1:04:17<12:57, 14.66s/it]
+ 83%|████████▎ | 253/305 [1:04:32<12:40, 14.63s/it]
+ 83%|████████▎ | 254/305 [1:04:46<12:18, 14.48s/it]
+ 84%|████████▎ | 255/305 [1:05:01<12:05, 14.51s/it]
+ 84%|████████▍ | 256/305 [1:05:15<11:51, 14.52s/it]
+ 84%|████████▍ | 257/305 [1:05:30<11:41, 14.62s/it]
+ 85%|████████▍ | 258/305 [1:05:45<11:26, 14.61s/it]
+ 85%|████████▍ | 259/305 [1:05:59<11:07, 14.52s/it]
+ 85%|████████▌ | 260/305 [1:06:13<10:53, 14.51s/it]
+ 86%|████████▌ | 261/305 [1:06:28<10:35, 14.45s/it]
+ 86%|████████▌ | 262/305 [1:06:42<10:21, 14.46s/it]
+ 86%|████████▌ | 263/305 [1:06:57<10:11, 14.56s/it]
+ 87%|████████▋ | 264/305 [1:07:11<09:55, 14.53s/it]
+ 87%|████████▋ | 265/305 [1:07:26<09:37, 14.44s/it]
+ 87%|████████▋ | 266/305 [1:07:40<09:25, 14.50s/it]
+ 88%|████████▊ | 267/305 [1:07:55<09:08, 14.44s/it]
+ 88%|████████▊ | 268/305 [1:08:09<08:50, 14.34s/it]
+ 88%|████████▊ | 269/305 [1:08:23<08:37, 14.38s/it]
+ 89%|████████▊ | 270/305 [1:08:38<08:23, 14.39s/it]
+ 89%|████████▉ | 271/305 [1:08:52<08:10, 14.42s/it]
+ 89%|████████▉ | 272/305 [1:09:07<07:56, 14.44s/it]
+ 90%|████████▉ | 273/305 [1:09:21<07:41, 14.43s/it]
+ 90%|████████▉ | 274/305 [1:09:35<07:28, 14.46s/it]
+ 90%|█████████ | 275/305 [1:09:50<07:14, 14.47s/it]
+ 90%|█████████ | 276/305 [1:10:04<06:57, 14.40s/it]
+ 91%|█████████ | 277/305 [1:10:19<06:44, 14.44s/it]
+ 91%|█████████ | 278/305 [1:10:33<06:29, 14.42s/it]
+ 91%|█████████▏| 279/305 [1:10:48<06:17, 14.51s/it]
+ 92%|█████████▏| 280/305 [1:11:02<06:02, 14.52s/it]
+ 92%|█████████▏| 281/305 [1:11:17<05:47, 14.48s/it]
+ 92%|█████████▏| 282/305 [1:11:31<05:34, 14.53s/it]
+ 93%|█████████▎| 283/305 [1:11:46<05:19, 14.54s/it]
+ 93%|█████████▎| 284/305 [1:12:00<05:03, 14.46s/it]
+ 93%|█████████▎| 285/305 [1:12:15<04:50, 14.52s/it]
+ 94%|█████████▍| 286/305 [1:12:30<04:37, 14.60s/it]
+ 94%|█████████▍| 287/305 [1:12:44<04:21, 14.52s/it]
+ 94%|█████████▍| 288/305 [1:12:58<04:04, 14.41s/it]
+ 95%|█████████▍| 289/305 [1:13:13<03:50, 14.42s/it]
+ 95%|█████████▌| 290/305 [1:13:27<03:36, 14.44s/it]
+ 95%|█████████▌| 291/305 [1:13:42<03:21, 14.42s/it]
+ 96%|█████████▌| 292/305 [1:13:56<03:06, 14.37s/it]
+ 96%|█████████▌| 293/305 [1:14:10<02:53, 14.44s/it]
+ 96%|█████████▋| 294/305 [1:14:25<02:39, 14.51s/it]
+ 97%|█████████▋| 295/305 [1:14:40<02:25, 14.53s/it]
+ 97%|█████████▋| 296/305 [1:14:54<02:10, 14.52s/it]
+ 97%|█████████▋| 297/305 [1:15:08<01:55, 14.46s/it]
+ 98%|█████████▊| 298/305 [1:15:23<01:41, 14.49s/it]
+ 98%|█████████▊| 299/305 [1:15:38<01:27, 14.51s/it]
+ 98%|█████████▊| 300/305 [1:15:52<01:12, 14.48s/it]
+ 99%|█████████▊| 301/305 [1:16:07<00:58, 14.51s/it]
+ 99%|█████████▉| 302/305 [1:16:21<00:43, 14.49s/it]
+ 99%|█████████▉| 303/305 [1:16:35<00:28, 14.45s/it]
+100%|█████████▉| 304/305 [1:16:50<00:14, 14.43s/it]
+100%|██████████| 305/305 [1:16:58<00:00, 12.61s/it]
+100%|██████████| 305/305 [1:16:58<00:00, 15.14s/it]
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [02:55<08:46, 175.52s/it] 50%|█████     | 2/4 [05:49<05:49, 174.88s/it] 75%|███████▌  | 3/4 [08:39<02:52, 172.33s/it]100%|██████████| 4/4 [11:31<00:00, 172.46s/it]100%|██████████| 4/4 [11:31<00:00, 172.98s/it]
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [02:56<08:49, 176.38s/it] 50%|█████     | 2/4 [05:52<05:52, 176.28s/it] 75%|███████▌  | 3/4 [08:45<02:54, 174.81s/it]100%|██████████| 4/4 [08:53<00:00, 108.75s/it]100%|██████████| 4/4 [08:53<00:00, 133.29s/it]
+
+-------------------------------------Iter2--------------------------------------
+Train: final loss=34.414198, aspect loss=6.093396, opinion loss=9.461056, sentiment loss=12.766179, reg loss=17.153677, step=915
+Dev:   final loss=35.682927, aspect loss=10.718014, opinion loss=7.080449, sentiment loss=7.166389, reg loss=6.109821, step=915
+Dev:   aspect f1=0.8707, opinion f1=0.8717, sentiment acc==0.7896, sentiment f1==0.6932, ABSA f1==0.6855,
+Test:  aspect f1=0.8724, opinion f1=0.8628, sentiment acc==0.8532, sentiment f1==0.7717, ABSA f1==0.7430,
+Current Max Metrics Index : 0 Current Min Loss Index : 0 Epoch Time: 76m 59s
+  0%|          | 0/305 [00:00<?, ?it/s]  0%|          | 1/305 [00:14<1:13:45, 14.56s/it]  1%|          | 2/305 [00:28<1:12:19, 14.32s/it]  1%|          | 3/305 [00:42<1:11:36, 14.23s/it]  1%|▏         | 4/305 [00:57<1:12:03, 14.36s/it]  2%|▏         | 5/305 [01:11<1:11:56, 14.39s/it]  2%|▏         | 6/305 [01:26<1:11:41, 14.39s/it]  2%|▏         | 7/305 [01:40<1:11:44, 14.45s/it]  3%|▎         | 8/305 [01:54<1:10:55, 14.33s/it]  3%|▎         | 9/305 [02:09<1:11:01, 14.40s/it]  3%|▎         | 10/305 [02:23<1:10:28, 14.34s/it]  4%|▎         | 11/305 [02:37<1:09:56, 14.27s/it]  4%|▍         | 12/305 [02:52<1:10:03, 14.35s/it]  4%|▍         | 13/305 [03:06<1:09:38, 14.31s/it]  5%|▍         | 14/305 [03:20<1:09:41, 14.37s/it]  5%|▍         | 15/305 [03:35<1:09:57, 14.47s/it]  5%|▌         | 16/305 [03:49<1:09:26, 14.42s/it]  6%|▌         | 17/305 [04:04<1:09:13, 14.42s/it]  6%|▌         | 18/305 [04:18<1:08:56, 14.41s/it]  6%|▌         | 19/305 [04:33<1:08:52, 14.45s/it]  7%|▋         | 20/305 [04:47<1:08:54, 14.51s/it]  7%|▋         | 21/305 [05:02<1:08:35, 14.49s/it]  7%|▋         | 22/305 [05:16<1:08:23, 14.50s/it]  8%|▊         | 23/305 [05:31<1:08:10, 14.50s/it]  8%|▊         | 24/305 [05:46<1:07:59, 14.52s/it]  8%|▊         | 25/305 [06:00<1:07:44, 14.51s/it]  9%|▊         | 26/305 [06:14<1:07:21, 14.49s/it]  9%|▉         | 27/305 [06:29<1:07:18, 14.53s/it]  9%|▉         | 28/305 [06:44<1:07:06, 14.54s/it] 10%|▉         | 29/305 [06:58<1:06:33, 14.47s/it] 10%|▉         | 30/305 [07:13<1:06:48, 14.58s/it] 10%|█         | 31/305 [07:27<1:06:19, 14.52s/it] 10%|█         | 32/305 [07:42<1:06:07, 14.53s/it] 11%|█         | 33/305 [07:56<1:05:46, 14.51s/it] 11%|█         | 34/305 [08:10<1:04:49, 14.35s/it] 11%|█▏        | 35/305 [08:25<1:04:42, 14.38s/it] 12%|█▏        | 36/305 [08:39<1:04:31, 14.39s/it] 12%|█▏        | 37/305 [08:54<1:04:30, 14.44s/it] 12%|█▏        | 38/305 [09:08<1:04:20, 14.46s/it] 13%|█▎        | 39/305 [09:22<1:03:34, 14.34s/it] 13%|█▎        | 40/305 [09:37<1:03:34, 14.39s/it] 13%|█▎        | 41/305 [09:51<1:03:09, 14.35s/it] 14%|█▍        | 42/305 [10:05<1:03:02, 14.38s/it] 14%|█▍        | 43/305 [10:20<1:03:00, 14.43s/it] 14%|█▍        | 44/305 [10:34<1:02:32, 14.38s/it] 15%|█▍        | 45/305 [10:49<1:02:28, 14.42s/it] 15%|█▌        | 46/305 [11:03<1:02:14, 14.42s/it] 15%|█▌        | 47/305 [11:18<1:02:13, 14.47s/it] 16%|█▌        | 48/305 [11:32<1:02:09, 14.51s/it] 16%|█▌        | 49/305 [11:47<1:02:00, 14.53s/it] 16%|█▋        | 50/305 [12:02<1:01:57, 14.58s/it] 17%|█▋        | 51/305 [12:16<1:01:38, 14.56s/it] 17%|█▋        | 52/305 [12:31<1:01:20, 14.55s/it] 17%|█▋        | 53/305 [12:45<1:00:51, 14.49s/it] 18%|█▊        | 54/305 [13:00<1:00:45, 14.52s/it] 18%|█▊        | 55/305 [13:14<1:00:26, 14.51s/it] 18%|█▊        | 56/305 [13:28<59:58, 14.45s/it]   19%|█▊        | 57/305 [13:43<59:26, 14.38s/it] 19%|█▉        | 58/305 [13:57<59:25, 14.44s/it] 19%|█▉        | 59/305 [14:12<59:26, 14.50s/it] 20%|█▉        | 60/305 [14:26<59:01, 14.45s/it] 20%|██        | 61/305 [14:40<58:32, 14.39s/it] 20%|██        | 62/305 [14:55<58:03, 14.34s/it] 21%|██        | 63/305 [15:09<58:01, 14.39s/it] 21%|██        | 64/305 [15:24<58:00, 14.44s/it] 21%|██▏       | 65/305 [15:38<58:02, 14.51s/it] 22%|██▏       | 66/305 [15:53<57:57, 14.55s/it] 22%|██▏       | 67/305 [16:07<57:26, 14.48s/it] 22%|██▏       | 68/305 [16:22<57:22, 14.53s/it] 23%|██▎       | 69/305 [16:36<57:01, 14.50s/it] 23%|██▎       | 70/305 [16:51<56:54, 14.53s/it] 23%|██▎       | 71/305 [17:05<56:39, 14.53s/it] 24%|██▎       | 72/305 [17:20<56:11, 14.47s/it] 24%|██▍       | 73/305 [17:34<56:00, 14.48s/it] 24%|██▍       | 74/305 [17:49<55:53, 14.52s/it] 25%|██▍       | 75/305 [18:03<55:39, 14.52s/it] 25%|██▍       | 76/305 [18:18<55:41, 14.59s/it] 25%|██▌       | 77/305 [18:33<55:39, 14.65s/it] 26%|██▌       | 78/305 [18:48<55:16, 14.61s/it] 26%|██▌       | 79/305 [19:02<55:23, 14.71s/it] 26%|██▌       | 80/305 [19:17<55:04, 14.69s/it] 27%|██▋       | 81/305 [19:32<54:39, 14.64s/it] 27%|██▋       | 82/305 [19:46<54:15, 14.60s/it] 27%|██▋       | 83/305 [20:01<54:04, 14.61s/it] 28%|██▊       | 84/305 [20:15<53:46, 14.60s/it] 28%|██▊       | 85/305 [20:30<53:44, 14.66s/it] 28%|██▊       | 86/305 [20:45<53:34, 14.68s/it] 29%|██▊       | 87/305 [20:59<53:13, 14.65s/it] 29%|██▉       | 88/305 [21:14<52:24, 14.49s/it] 29%|██▉       | 89/305 [21:28<52:15, 14.52s/it] 30%|██▉       | 90/305 [21:42<51:43, 14.44s/it] 30%|██▉       | 91/305 [21:57<51:16, 14.37s/it] 30%|███       | 92/305 [22:11<50:52, 14.33s/it] 30%|███       | 93/305 [22:25<50:46, 14.37s/it] 31%|███       | 94/305 [22:39<50:18, 14.31s/it] 31%|███       | 95/305 [22:54<50:17, 14.37s/it] 31%|███▏      | 96/305 [23:08<49:50, 14.31s/it] 32%|███▏      | 97/305 [23:23<49:50, 14.38s/it] 32%|███▏      | 98/305 [23:37<49:27, 14.34s/it] 32%|███▏      | 99/305 [23:52<49:33, 14.43s/it] 33%|███▎      | 100/305 [24:06<49:37, 14.52s/it] 33%|███▎      | 101/305 [24:21<49:31, 14.56s/it] 33%|███▎      | 102/305 [24:36<49:20, 14.58s/it] 34%|███▍      | 103/305 [24:50<48:47, 14.49s/it] 34%|███▍      | 104/305 [25:04<48:22, 14.44s/it] 34%|███▍      | 105/305 [25:19<48:14, 14.47s/it] 35%|███▍      | 106/305 [25:33<47:50, 14.42s/it] 35%|███▌      | 107/305 [25:48<47:39, 14.44s/it] 35%|███▌      | 108/305 [26:02<47:19, 14.41s/it] 36%|███▌      | 109/305 [26:16<46:51, 14.35s/it] 36%|███▌      | 110/305 [26:31<46:53, 14.43s/it] 36%|███▋      | 111/305 [26:45<46:26, 14.36s/it] 37%|███▋      | 112/305 [27:00<46:24, 14.43s/it] 37%|███▋      | 113/305 [27:14<46:04, 14.40s/it] 37%|███▋      | 114/305 [27:28<46:02, 14.46s/it] 38%|███▊      | 115/305 [27:43<45:57, 14.51s/it] 38%|███▊      | 116/305 [27:57<45:35, 14.48s/it] 38%|███▊      | 117/305 [28:12<45:15, 14.44s/it] 39%|███▊      | 118/305 [28:27<45:14, 14.52s/it] 39%|███▉      | 119/305 [28:41<45:06, 14.55s/it] 39%|███▉      | 120/305 [28:56<44:45, 14.52s/it] 40%|███▉      | 121/305 [29:10<44:20, 14.46s/it] 40%|████      | 122/305 [29:24<43:55, 14.40s/it] 40%|████      | 123/305 [29:39<43:36, 14.38s/it] 41%|████      | 124/305 [29:53<43:04, 14.28s/it] 41%|████      | 125/305 [30:07<42:35, 14.20s/it] 41%|████▏     | 126/305 [30:21<42:26, 14.22s/it] 42%|████▏     | 127/305 [30:35<42:15, 14.24s/it] 42%|████▏     | 128/305 [30:49<41:47, 14.17s/it] 42%|████▏     | 129/305 [31:03<41:28, 14.14s/it] 43%|████▎     | 130/305 [31:17<41:02, 14.07s/it] 43%|████▎     | 131/305 [31:31<40:56, 14.12s/it] 43%|████▎     | 132/305 [31:46<41:02, 14.23s/it] 44%|████▎     | 133/305 [32:00<40:56, 14.28s/it] 44%|████▍     | 134/305 [32:15<40:52, 14.34s/it] 44%|████▍     | 135/305 [32:29<40:36, 14.33s/it] 45%|████▍     | 136/305 [32:43<40:02, 14.22s/it] 45%|████▍     | 137/305 [32:57<39:53, 14.25s/it] 45%|████▌     | 138/305 [33:11<39:30, 14.20s/it] 46%|████▌     | 139/305 [33:25<39:09, 14.16s/it] 46%|████▌     | 140/305 [33:40<38:57, 14.17s/it] 46%|████▌     | 141/305 [33:54<38:57, 14.25s/it] 47%|████▋     | 142/305 [34:08<38:36, 14.21s/it] 47%|████▋     | 143/305 [34:23<38:31, 14.27s/it] 47%|████▋     | 144/305 [34:37<38:27, 14.34s/it] 48%|████▊     | 145/305 [34:51<38:01, 14.26s/it] 48%|████▊     | 146/305 [35:05<37:43, 14.24s/it] 48%|████▊     | 147/305 [35:20<37:34, 14.27s/it] 49%|████▊     | 148/305 [35:34<37:33, 14.35s/it] 49%|████▉     | 149/305 [35:49<37:20, 14.36s/it] 49%|████▉     | 150/305 [36:03<37:06, 14.37s/it] 50%|████▉     | 151/305 [36:17<36:43, 14.31s/it] 50%|████▉     | 152/305 [36:31<36:23, 14.27s/it] 50%|█████     | 153/305 [36:46<36:17, 14.32s/it] 50%|█████     | 154/305 [37:00<35:55, 14.28s/it] 51%|█████     | 155/305 [37:14<35:48, 14.32s/it] 51%|█████     | 156/305 [37:29<35:39, 14.36s/it] 51%|█████▏    | 157/305 [37:43<35:31, 14.40s/it] 52%|█████▏    | 158/305 [37:58<35:18, 14.41s/it] 52%|█████▏    | 159/305 [38:12<35:09, 14.45s/it] 52%|█████▏    | 160/305 [38:27<34:50, 14.42s/it] 53%|█████▎    | 161/305 [38:41<34:17, 14.29s/it] 53%|█████▎    | 162/305 [38:55<34:05, 14.30s/it] 53%|█████▎    | 163/305 [39:09<33:51, 14.31s/it] 54%|█████▍    | 164/305 [39:24<33:33, 14.28s/it] 54%|█████▍    | 165/305 [39:38<33:17, 14.27s/it] 54%|█████▍    | 166/305 [39:52<33:03, 14.27s/it] 55%|█████▍    | 167/305 [40:06<32:44, 14.24s/it] 55%|█████▌    | 168/305 [40:21<32:37, 14.29s/it] 55%|█████▌    | 169/305 [40:35<32:31, 14.35s/it] 56%|█████▌    | 170/305 [40:49<32:18, 14.36s/it] 56%|█████▌    | 171/305 [41:04<32:04, 14.36s/it] 56%|█████▋    | 172/305 [41:18<31:48, 14.35s/it] 57%|█████▋    | 173/305 [41:32<31:29, 14.31s/it] 57%|█████▋    | 174/305 [41:47<31:12, 14.29s/it] 57%|█████▋    | 175/305 [42:01<30:53, 14.26s/it] 58%|█████▊    | 176/305 [42:15<30:34, 14.22s/it] 58%|█████▊    | 177/305 [42:29<30:21, 14.23s/it] 58%|█████▊    | 178/305 [42:43<30:08, 14.24s/it] 59%|█████▊    | 179/305 [42:58<29:58, 14.27s/it] 59%|█████▉    | 180/305 [43:12<29:50, 14.33s/it] 59%|█████▉    | 181/305 [43:27<29:48, 14.42s/it] 60%|█████▉    | 182/305 [43:41<29:29, 14.39s/it] 60%|██████    | 183/305 [43:55<29:09, 14.34s/it] 60%|██████    | 184/305 [44:10<29:00, 14.39s/it] 61%|██████    | 185/305 [44:24<28:44, 14.37s/it] 61%|██████    | 186/305 [44:39<28:30, 14.37s/it] 61%|██████▏   | 187/305 [44:53<28:16, 14.38s/it] 62%|██████▏   | 188/305 [45:07<28:02, 14.38s/it] 62%|██████▏   | 189/305 [45:22<27:40, 14.32s/it] 62%|██████▏   | 190/305 [45:36<27:33, 14.38s/it] 63%|██████▎   | 191/305 [45:51<27:21, 14.39s/it] 63%|██████▎   | 192/305 [46:05<26:52, 14.27s/it] 63%|██████▎   | 193/305 [46:19<26:39, 14.28s/it] 64%|██████▎   | 194/305 [46:33<26:25, 14.28s/it] 64%|██████▍   | 195/305 [46:47<26:01, 14.20s/it] 64%|██████▍   | 196/305 [47:01<25:50, 14.23s/it] 65%|██████▍   | 197/305 [47:16<25:41, 14.27s/it] 65%|██████▍   | 198/305 [47:30<25:24, 14.25s/it] 65%|██████▌   | 199/305 [47:44<25:05, 14.20s/it] 66%|██████▌   | 200/305 [47:58<24:57, 14.26s/it] 66%|██████▌   | 201/305 [48:12<24:35, 14.19s/it] 66%|██████▌   | 202/305 [48:27<24:27, 14.24s/it] 67%|██████▋   | 203/305 [48:41<24:04, 14.16s/it] 67%|██████▋   | 204/305 [48:55<23:51, 14.18s/it] 67%|██████▋   | 205/305 [49:09<23:43, 14.24s/it] 68%|██████▊   | 206/305 [49:24<23:32, 14.27s/it] 68%|██████▊   | 207/305 [49:38<23:10, 14.18s/it] 68%|██████▊   | 208/305 [49:52<22:51, 14.14s/it] 69%|██████▊   | 209/305 [50:06<22:43, 14.21s/it] 69%|██████▉   | 210/305 [50:20<22:28, 14.19s/it] 69%|██████▉   | 211/305 [50:34<22:12, 14.18s/it] 70%|██████▉   | 212/305 [50:49<21:59, 14.19s/it] 70%|██████▉   | 213/305 [51:03<21:47, 14.21s/it] 70%|███████   | 214/305 [51:17<21:35, 14.24s/it] 70%|███████   | 215/305 [51:32<21:22, 14.25s/it] 71%|███████   | 216/305 [51:46<21:01, 14.17s/it] 71%|███████   | 217/305 [52:00<20:51, 14.22s/it] 71%|███████▏  | 218/305 [52:14<20:40, 14.26s/it] 72%|███████▏  | 219/305 [52:28<20:23, 14.23s/it] 72%|███████▏  | 220/305 [52:42<20:07, 14.20s/it] 72%|███████▏  | 221/305 [52:57<19:56, 14.24s/it] 73%|███████▎  | 222/305 [53:11<19:38, 14.20s/it] 73%|███████▎  | 223/305 [53:25<19:26, 14.22s/it] 73%|███████▎  | 224/305 [53:39<19:06, 14.15s/it] 74%|███████▍  | 225/305 [53:53<18:52, 14.16s/it] 74%|███████▍  | 226/305 [54:07<18:33, 14.10s/it] 74%|███████▍  | 227/305 [54:22<18:26, 14.18s/it] 75%|███████▍  | 228/305 [54:36<18:11, 14.18s/it] 75%|███████▌  | 229/305 [54:50<17:58, 14.19s/it] 75%|███████▌  | 230/305 [55:04<17:42, 14.17s/it] 76%|███████▌  | 231/305 [55:18<17:24, 14.12s/it] 76%|███████▌  | 232/305 [55:32<17:07, 14.07s/it] 76%|███████▋  | 233/305 [55:46<16:53, 14.07s/it] 77%|███████▋  | 234/305 [56:00<16:43, 14.13s/it] 77%|███████▋  | 235/305 [56:15<16:29, 14.13s/it] 77%|███████▋  | 236/305 [56:29<16:15, 14.14s/it] 78%|███████▊  | 237/305 [56:43<15:58, 14.09s/it] 78%|███████▊  | 238/305 [56:57<15:47, 14.13s/it] 78%|███████▊  | 239/305 [57:11<15:30, 14.10s/it] 79%|███████▊  | 240/305 [57:25<15:15, 14.08s/it] 79%|███████▉  | 241/305 [57:39<15:04, 14.13s/it] 79%|███████▉  | 242/305 [57:54<14:51, 14.16s/it] 80%|███████▉  | 243/305 [58:08<14:42, 14.24s/it] 80%|████████  | 244/305 [58:22<14:30, 14.27s/it] 80%|████████  | 245/305 [58:37<14:15, 14.26s/it] 81%|████████  | 246/305 [58:51<14:04, 14.32s/it] 81%|████████  | 247/305 [59:05<13:45, 14.23s/it] 81%|████████▏ | 248/305 [59:19<13:28, 14.19s/it] 82%|████████▏ | 249/305 [59:33<13:12, 14.15s/it] 82%|████████▏ | 250/305 [59:47<12:57, 14.14s/it] 82%|████████▏ | 251/305 [1:00:02<12:46, 14.19s/it] 83%|████████▎ | 252/305 [1:00:16<12:31, 14.17s/it] 83%|████████▎ | 253/305 [1:00:30<12:19, 14.23s/it] 83%|████████▎ | 254/305 [1:00:45<12:10, 14.32s/it] 84%|████████▎ | 255/305 [1:00:59<11:57, 14.34s/it] 84%|████████▍ | 256/305 [1:01:13<11:43, 14.36s/it] 84%|████████▍ | 257/305 [1:01:27<11:24, 14.26s/it] 85%|████████▍ | 258/305 [1:01:42<11:09, 14.25s/it] 85%|████████▍ | 259/305 [1:01:56<10:56, 14.26s/it] 85%|████████▌ | 260/305 [1:02:10<10:41, 14.26s/it] 86%|████████▌ | 261/305 [1:02:25<10:28, 14.29s/it] 86%|████████▌ | 262/305 [1:02:39<10:14, 14.30s/it] 86%|████████▌ | 263/305 [1:02:53<09:59, 14.28s/it] 87%|████████▋ | 264/305 [1:03:08<09:49, 14.37s/it] 87%|████████▋ | 265/305 [1:03:22<09:36, 14.40s/it] 87%|████████▋ | 266/305 [1:03:36<09:18, 14.32s/it] 88%|████████▊ | 267/305 [1:03:51<09:03, 14.30s/it] 88%|████████▊ | 268/305 [1:04:05<08:52, 14.38s/it] 88%|████████▊ | 269/305 [1:04:19<08:35, 14.33s/it] 89%|████████▊ | 270/305 [1:04:33<08:19, 14.27s/it] 89%|████████▉ | 271/305 [1:04:47<08:01, 14.16s/it] 89%|████████▉ | 272/305 [1:05:02<07:48, 14.20s/it] 90%|████████▉ | 273/305 [1:05:16<07:35, 14.24s/it] 90%|████████▉ | 274/305 [1:05:30<07:20, 14.20s/it] 90%|█████████ | 275/305 [1:05:44<07:06, 14.21s/it] 90%|█████████ | 276/305 [1:05:58<06:48, 14.09s/it] 91%|█████████ | 277/305 [1:06:12<06:36, 14.15s/it] 91%|█████████ | 278/305 [1:06:27<06:21, 14.14s/it] 91%|█████████▏| 279/305 [1:06:41<06:10, 14.27s/it] 92%|█████████▏| 280/305 [1:06:56<05:58, 14.33s/it] 92%|█████████▏| 281/305 [1:07:10<05:43, 14.33s/it] 92%|█████████▏| 282/305 [1:07:24<05:28, 14.30s/it] 93%|█████████▎| 283/305 [1:07:39<05:15, 14.33s/it] 93%|█████████▎| 284/305 [1:07:53<05:00, 14.32s/it] 93%|█████████▎| 285/305 [1:08:07<04:45, 14.28s/it] 94%|█████████▍| 286/305 [1:08:22<04:33, 14.37s/it] 94%|█████████▍| 287/305 [1:08:36<04:17, 14.32s/it] 94%|█████████▍| 288/305 [1:08:50<04:02, 14.27s/it] 95%|█████████▍| 289/305 [1:09:04<03:49, 14.33s/it] 95%|█████████▌| 290/305 [1:09:19<03:35, 14.39s/it] 95%|█████████▌| 291/305 [1:09:34<03:22, 14.46s/it] 96%|█████████▌| 292/305 [1:09:48<03:08, 14.51s/it] 96%|█████████▌| 293/305 [1:10:03<02:53, 14.47s/it] 96%|█████████▋| 294/305 [1:10:17<02:38, 14.44s/it] 97%|█████████▋| 295/305 [1:10:31<02:23, 14.37s/it] 97%|█████████▋| 296/305 [1:10:45<02:08, 14.30s/it] 97%|█████████▋| 297/305 [1:11:00<01:54, 14.36s/it] 98%|█████████▊| 298/305 [1:11:14<01:40, 14.40s/it] 98%|█████████▊| 299/305 [1:11:28<01:25, 14.27s/it] 98%|█████████▊| 300/305 [1:11:43<01:11, 14.30s/it] 99%|█████████▊| 301/305 [1:11:57<00:57, 14.26s/it] 99%|█████████▉| 302/305 [1:12:11<00:42, 14.29s/it] 99%|█████████▉| 303/305 [1:12:25<00:28, 14.23s/it]100%|█████████▉| 304/305 [1:12:40<00:14, 14.27s/it]100%|██████████| 305/305 [1:12:48<00:00, 12.43s/it]100%|██████████| 305/305 [1:12:48<00:00, 14.32s/it]
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [02:52<08:36, 172.20s/it] 50%|█████     | 2/4 [05:44<05:44, 172.50s/it] 75%|███████▌  | 3/4 [08:32<02:50, 170.37s/it]100%|██████████| 4/4 [11:20<00:00, 169.53s/it]100%|██████████| 4/4 [11:20<00:00, 170.25s/it]
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [02:51<08:33, 171.02s/it] 50%|█████     | 2/4 [05:41<05:41, 170.90s/it] 75%|███████▌  | 3/4 [08:33<02:51, 171.36s/it]100%|██████████| 4/4 [08:41<00:00, 106.68s/it]100%|██████████| 4/4 [08:41<00:00, 130.32s/it]
+
+-------------------------------------Iter3--------------------------------------
+Train: final loss=16.254269, aspect loss=1.907881, opinion loss=5.010604, sentiment loss=7.427588, reg loss=31.582429, step=1220
+Dev:   final loss=42.138907, aspect loss=13.241583, opinion loss=7.788625, sentiment loss=7.867036, reg loss=8.138125, step=1220
+Dev:   aspect f1=0.8544, opinion f1=0.8819, sentiment acc==0.7769, sentiment f1==0.7044, ABSA f1==0.6615,
+Test:  aspect f1=0.8810, opinion f1=0.8692, sentiment acc==0.8576, sentiment f1==0.7814, ABSA f1==0.7543,
+Current Max Metrics Index : 0 Current Min Loss Index : 0 Epoch Time: 72m 48s
+  0%|          | 0/305 [00:00<?, ?it/s]  0%|          | 1/305 [00:14<1:14:29, 14.70s/it]  1%|          | 2/305 [00:31<1:21:43, 16.18s/it]  1%|          | 3/305 [00:46<1:18:24, 15.58s/it]  1%|▏         | 4/305 [01:00<1:15:10, 14.98s/it]  2%|▏         | 5/305 [01:14<1:13:23, 14.68s/it]  2%|▏         | 6/305 [01:29<1:12:25, 14.53s/it]  2%|▏         | 7/305 [01:43<1:12:02, 14.51s/it]  3%|▎         | 8/305 [01:57<1:11:22, 14.42s/it]  3%|▎         | 9/305 [02:12<1:10:45, 14.34s/it]  3%|▎         | 10/305 [02:27<1:11:31, 14.55s/it]  4%|▎         | 11/305 [02:41<1:10:23, 14.37s/it]  4%|▍         | 12/305 [02:55<1:09:49, 14.30s/it]  4%|▍         | 13/305 [03:09<1:09:23, 14.26s/it]  5%|▍         | 14/305 [03:23<1:08:48, 14.19s/it]  5%|▍         | 15/305 [03:37<1:08:14, 14.12s/it]  5%|▌         | 16/305 [03:51<1:08:14, 14.17s/it]  6%|▌         | 17/305 [04:07<1:09:47, 14.54s/it]  6%|▌         | 18/305 [04:22<1:10:17, 14.69s/it]  6%|▌         | 19/305 [04:36<1:09:32, 14.59s/it]  7%|▋         | 20/305 [04:50<1:08:39, 14.45s/it]  7%|▋         | 21/305 [05:04<1:07:58, 14.36s/it]  7%|▋         | 22/305 [05:18<1:07:14, 14.26s/it]  8%|▊         | 23/305 [05:33<1:07:07, 14.28s/it]  8%|▊         | 24/305 [05:47<1:06:47, 14.26s/it]  8%|▊         | 25/305 [06:01<1:06:31, 14.26s/it]  9%|▊         | 26/305 [06:15<1:06:18, 14.26s/it]  9%|▉         | 27/305 [06:29<1:05:48, 14.20s/it]  9%|▉         | 28/305 [06:43<1:05:25, 14.17s/it] 10%|▉         | 29/305 [06:58<1:05:23, 14.21s/it] 10%|▉         | 30/305 [07:12<1:05:02, 14.19s/it] 10%|█         | 31/305 [07:26<1:04:47, 14.19s/it] 10%|█         | 32/305 [07:40<1:04:27, 14.16s/it] 11%|█         | 33/305 [07:55<1:04:25, 14.21s/it] 11%|█         | 34/305 [08:09<1:04:10, 14.21s/it] 11%|█▏        | 35/305 [08:23<1:03:50, 14.19s/it] 12%|█▏        | 36/305 [08:37<1:03:22, 14.13s/it] 12%|█▏        | 37/305 [08:51<1:03:11, 14.15s/it] 12%|█▏        | 38/305 [09:05<1:02:27, 14.04s/it] 13%|█▎        | 39/305 [09:19<1:02:26, 14.08s/it] 13%|█▎        | 40/305 [09:33<1:02:29, 14.15s/it] 13%|█▎        | 41/305 [09:48<1:02:41, 14.25s/it] 14%|█▍        | 42/305 [10:02<1:02:06, 14.17s/it] 14%|█▍        | 43/305 [10:16<1:01:37, 14.11s/it] 14%|█▍        | 44/305 [10:30<1:01:37, 14.17s/it] 15%|█▍        | 45/305 [10:44<1:01:20, 14.16s/it] 15%|█▌        | 46/305 [10:58<1:01:09, 14.17s/it] 15%|█▌        | 47/305 [11:13<1:01:07, 14.21s/it] 16%|█▌        | 48/305 [11:27<1:00:25, 14.11s/it] 16%|█▌        | 49/305 [11:41<1:00:03, 14.08s/it] 16%|█▋        | 50/305 [11:55<59:57, 14.11s/it]   17%|█▋        | 51/305 [12:09<59:46, 14.12s/it] 17%|█▋        | 52/305 [12:23<59:34, 14.13s/it] 17%|█▋        | 53/305 [12:37<59:29, 14.17s/it] 18%|█▊        | 54/305 [12:52<59:25, 14.21s/it] 18%|█▊        | 55/305 [13:06<59:15, 14.22s/it] 18%|█▊        | 56/305 [13:20<59:02, 14.23s/it] 19%|█▊        | 57/305 [13:34<58:09, 14.07s/it] 19%|█▉        | 58/305 [13:48<57:48, 14.04s/it] 19%|█▉        | 59/305 [14:02<57:36, 14.05s/it] 20%|█▉        | 60/305 [14:16<57:31, 14.09s/it] 20%|██        | 61/305 [14:30<56:51, 13.98s/it] 20%|██        | 62/305 [14:44<56:33, 13.97s/it] 21%|██        | 63/305 [14:58<56:14, 13.95s/it] 21%|██        | 64/305 [15:12<56:12, 13.99s/it] 21%|██▏       | 65/305 [15:26<56:16, 14.07s/it] 22%|██▏       | 66/305 [15:40<55:51, 14.02s/it] 22%|██▏       | 67/305 [15:54<55:27, 13.98s/it] 22%|██▏       | 68/305 [16:07<54:48, 13.87s/it] 23%|██▎       | 69/305 [16:21<54:36, 13.88s/it] 23%|██▎       | 70/305 [16:35<54:16, 13.86s/it] 23%|██▎       | 71/305 [16:49<54:28, 13.97s/it] 24%|██▎       | 72/305 [17:03<54:20, 14.00s/it] 24%|██▍       | 73/305 [17:17<54:09, 14.01s/it] 24%|██▍       | 74/305 [17:31<53:50, 13.98s/it] 25%|██▍       | 75/305 [17:45<53:35, 13.98s/it] 25%|██▍       | 76/305 [17:59<53:19, 13.97s/it] 25%|██▌       | 77/305 [18:13<53:16, 14.02s/it] 26%|██▌       | 78/305 [18:27<53:09, 14.05s/it] 26%|██▌       | 79/305 [18:42<52:52, 14.04s/it] 26%|██▌       | 80/305 [18:56<52:38, 14.04s/it] 27%|██▋       | 81/305 [19:10<52:21, 14.03s/it] 27%|██▋       | 82/305 [19:23<52:01, 14.00s/it] 27%|██▋       | 83/305 [19:38<51:58, 14.05s/it] 28%|██▊       | 84/305 [19:51<51:18, 13.93s/it] 28%|██▊       | 85/305 [20:06<51:31, 14.05s/it] 28%|██▊       | 86/305 [20:19<50:54, 13.95s/it] 29%|██▊       | 87/305 [20:33<50:40, 13.95s/it] 29%|██▉       | 88/305 [20:47<50:42, 14.02s/it] 29%|██▉       | 89/305 [21:02<50:37, 14.06s/it] 30%|██▉       | 90/305 [21:16<50:21, 14.05s/it] 30%|██▉       | 91/305 [21:30<50:13, 14.08s/it] 30%|███       | 92/305 [21:44<50:05, 14.11s/it] 30%|███       | 93/305 [21:58<49:59, 14.15s/it] 31%|███       | 94/305 [22:12<49:38, 14.11s/it] 31%|███       | 95/305 [22:26<49:17, 14.08s/it] 31%|███▏      | 96/305 [22:40<49:00, 14.07s/it] 32%|███▏      | 97/305 [22:54<48:42, 14.05s/it] 32%|███▏      | 98/305 [23:08<48:33, 14.07s/it] 32%|███▏      | 99/305 [23:22<48:15, 14.05s/it] 33%|███▎      | 100/305 [23:36<47:54, 14.02s/it] 33%|███▎      | 101/305 [23:51<47:47, 14.05s/it] 33%|███▎      | 102/305 [24:05<47:35, 14.07s/it] 34%|███▍      | 103/305 [24:19<47:54, 14.23s/it] 34%|███▍      | 104/305 [24:34<48:04, 14.35s/it] 34%|███▍      | 105/305 [24:48<47:22, 14.21s/it] 35%|███▍      | 106/305 [25:03<48:22, 14.58s/it] 35%|███▌      | 107/305 [25:18<48:35, 14.73s/it] 35%|███▌      | 108/305 [25:33<48:18, 14.71s/it] 36%|███▌      | 109/305 [25:47<47:54, 14.66s/it] 36%|███▌      | 110/305 [26:02<47:21, 14.57s/it] 36%|███▋      | 111/305 [26:16<46:48, 14.48s/it] 37%|███▋      | 112/305 [26:31<46:36, 14.49s/it] 37%|███▋      | 113/305 [26:45<46:33, 14.55s/it] 37%|███▋      | 114/305 [27:00<46:02, 14.46s/it] 38%|███▊      | 115/305 [27:14<45:32, 14.38s/it] 38%|███▊      | 116/305 [27:28<45:08, 14.33s/it] 38%|███▊      | 117/305 [27:42<45:03, 14.38s/it] 39%|███▊      | 118/305 [27:57<44:48, 14.37s/it] 39%|███▉      | 119/305 [28:11<44:40, 14.41s/it] 39%|███▉      | 120/305 [28:26<44:37, 14.47s/it] 40%|███▉      | 121/305 [28:40<44:25, 14.49s/it] 40%|████      | 122/305 [28:55<44:04, 14.45s/it] 40%|████      | 123/305 [29:09<43:57, 14.49s/it] 41%|████      | 124/305 [29:24<43:31, 14.43s/it] 41%|████      | 125/305 [29:38<43:17, 14.43s/it] 41%|████▏     | 126/305 [29:52<42:54, 14.38s/it] 42%|████▏     | 127/305 [30:07<42:47, 14.43s/it] 42%|████▏     | 128/305 [30:22<42:57, 14.56s/it] 42%|████▏     | 129/305 [30:36<42:19, 14.43s/it] 43%|████▎     | 130/305 [30:50<41:43, 14.31s/it] 43%|████▎     | 131/305 [31:05<41:44, 14.39s/it] 43%|████▎     | 132/305 [31:19<41:11, 14.28s/it] 44%|████▎     | 133/305 [31:33<40:57, 14.29s/it] 44%|████▍     | 134/305 [31:47<40:52, 14.34s/it] 44%|████▍     | 135/305 [32:02<40:45, 14.39s/it] 45%|████▍     | 136/305 [32:16<40:42, 14.45s/it] 45%|████▍     | 137/305 [32:31<40:24, 14.43s/it] 45%|████▌     | 138/305 [32:46<40:24, 14.52s/it] 46%|████▌     | 139/305 [33:00<40:01, 14.47s/it] 46%|████▌     | 140/305 [33:14<39:38, 14.42s/it] 46%|████▌     | 141/305 [33:29<39:28, 14.44s/it] 47%|████▋     | 142/305 [33:43<39:29, 14.54s/it] 47%|████▋     | 143/305 [33:58<39:18, 14.56s/it] 47%|████▋     | 144/305 [34:12<38:49, 14.47s/it] 48%|████▊     | 145/305 [34:27<38:27, 14.42s/it] 48%|████▊     | 146/305 [34:41<38:07, 14.39s/it] 48%|████▊     | 147/305 [34:55<37:56, 14.41s/it] 49%|████▊     | 148/305 [35:10<37:42, 14.41s/it] 49%|████▉     | 149/305 [35:24<37:16, 14.33s/it] 49%|████▉     | 150/305 [35:38<37:10, 14.39s/it] 50%|████▉     | 151/305 [35:53<36:57, 14.40s/it] 50%|████▉     | 152/305 [36:07<36:23, 14.27s/it] 50%|█████     | 153/305 [36:21<36:13, 14.30s/it] 50%|█████     | 154/305 [36:36<36:01, 14.31s/it] 51%|█████     | 155/305 [36:50<35:59, 14.40s/it] 51%|█████     | 156/305 [37:05<35:57, 14.48s/it] 51%|█████▏    | 157/305 [37:19<35:31, 14.40s/it] 52%|█████▏    | 158/305 [37:33<35:02, 14.30s/it] 52%|█████▏    | 159/305 [37:48<34:51, 14.33s/it] 52%|█████▏    | 160/305 [38:02<34:47, 14.40s/it] 53%|█████▎    | 161/305 [38:17<34:41, 14.46s/it] 53%|█████▎    | 162/305 [38:31<34:18, 14.39s/it] 53%|█████▎    | 163/305 [38:45<34:02, 14.39s/it] 54%|█████▍    | 164/305 [39:00<33:54, 14.43s/it] 54%|█████▍    | 165/305 [39:14<33:38, 14.42s/it] 54%|█████▍    | 166/305 [39:29<33:29, 14.45s/it] 55%|█████▍    | 167/305 [39:43<33:05, 14.39s/it] 55%|█████▌    | 168/305 [39:57<32:47, 14.36s/it] 55%|█████▌    | 169/305 [40:12<32:31, 14.35s/it] 56%|█████▌    | 170/305 [40:26<32:12, 14.31s/it] 56%|█████▌    | 171/305 [40:40<32:06, 14.38s/it] 56%|█████▋    | 172/305 [40:55<31:50, 14.36s/it] 57%|█████▋    | 173/305 [41:09<31:29, 14.31s/it] 57%|█████▋    | 174/305 [41:23<31:15, 14.32s/it] 57%|█████▋    | 175/305 [41:38<31:11, 14.40s/it] 58%|█████▊    | 176/305 [41:52<31:03, 14.44s/it] 58%|█████▊    | 177/305 [42:07<30:47, 14.43s/it] 58%|█████▊    | 178/305 [42:21<30:19, 14.33s/it] 59%|█████▊    | 179/305 [42:35<29:58, 14.28s/it] 59%|█████▉    | 180/305 [42:49<29:44, 14.28s/it] 59%|█████▉    | 181/305 [43:04<29:36, 14.32s/it] 60%|█████▉    | 182/305 [43:18<29:26, 14.36s/it] 60%|██████    | 183/305 [43:33<29:18, 14.41s/it] 60%|██████    | 184/305 [43:47<28:58, 14.37s/it] 61%|██████    | 185/305 [44:01<28:37, 14.31s/it] 61%|██████    | 186/305 [44:16<28:24, 14.33s/it] 61%|██████▏   | 187/305 [44:30<28:15, 14.36s/it] 62%|██████▏   | 188/305 [44:45<28:07, 14.42s/it] 62%|██████▏   | 189/305 [44:59<27:51, 14.41s/it] 62%|██████▏   | 190/305 [45:13<27:33, 14.38s/it]slurmstepd: error: *** JOB 4805844 ON c7-3 CANCELLED AT 2022-01-12T20:05:22 DUE TO TIME LIMIT ***
+
+Task and CPU usage stats:
+       JobID    JobName  AllocCPUS   NTasks     MinCPU MinCPUTask     AveCPU    Elapsed ExitCode 
+------------ ---------- ---------- -------- ---------- ---------- ---------- ---------- -------- 
+4805844      pmhalvor/+          2                                             07:05:22      0:0 
+4805844.bat+      batch          2        1   14:51:13          0   14:51:13   07:05:23     0:15 
+4805844.ext+     extern          2        1   00:00:00          0   00:00:00   07:05:22      0:0 
+
+Memory usage stats:
+       JobID     MaxRSS MaxRSSTask     AveRSS MaxPages   MaxPagesTask   AvePages 
+------------ ---------- ---------- ---------- -------- -------------- ---------- 
+4805844                                                                          
+4805844.bat+  11993160K          0  11993160K        0              0          0 
+4805844.ext+          0          0          0        0              0          0 
+
+Disk usage stats:
+       JobID  MaxDiskRead MaxDiskReadTask    AveDiskRead MaxDiskWrite MaxDiskWriteTask   AveDiskWrite 
+------------ ------------ --------------- -------------- ------------ ---------------- -------------- 
+4805844                                                                                               
+4805844.bat+       12.85M               0         12.85M        0.06M                0          0.06M 
+4805844.ext+        0.00M               0          0.00M            0                0              0 
+
+Job 4805844 completed at Wed Jan 12 20:05:24 CET 2022
