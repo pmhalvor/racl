@@ -3,7 +3,7 @@
 #SBATCH --job-name=pmhalvor/fgsa
 #SBATCH --account=nn9851k
 #SBATCH --mail-type=FAIL
-#SBATCH --time=00:05:00
+#SBATCH --time=10:05:00
 #SBATCH --nodes=1
 #SBATCH --mem-per-cpu=10G
 #SBATCH --ntasks-per-node=2
@@ -35,4 +35,4 @@ module list
 # python3 -u train.py ${@}
 
 # run code 
-python3 train_racl_bert.py --task res14 --load 0
+python3 train_racl_bert.py --task norec_fine --load 0

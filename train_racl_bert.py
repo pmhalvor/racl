@@ -26,7 +26,7 @@ parser.add_argument('--class_num', default=3, type=int, help='class number')
 parser.add_argument('--load', default=0, type=int, help='load an existing checkpoint')
 opt = parser.parse_args()
 
-max_length_dict = {'res14':100, 'lap14':100, 'res15':100, 'norec_fine': 100}
+max_length_dict = {'res14':100, 'lap14':100, 'res15':100, 'norec_fine': 202}  # TODO what should max sentence length be?
 n_iter_dict = {'res14':15, 'lap14':15, 'res15':15, 'norec_fine': 15}
 kernel_size_dict = {'res14':3, 'lap14':3, 'res15':5, 'norec_fine': 3}  # TODO test 5
 hop_num_dict = {'res14':4, 'lap14':3, 'res15':3, 'norec_fine': 3}  # TODO test 5

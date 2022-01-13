@@ -315,18 +315,12 @@ def get_assignment_map_from_checkpoint(tvars, init_checkpoint):
       name = m.group(1)
     name_to_variable[name] = var
 
-  if ".h5" in init_checkpoint:
-    # do from before
-    # ckpt = tf.keras.models.load_model(model_path)  # TODO clean this heavy double load of model
-    # init_vars = ckpt.layers
-    print('Still reading .h5 data')
-    quit()
-  else:
-    init_vars = tf.train.list_variables(init_checkpoint)
+  init_vars = tf.train.list_variables(init_checkpoint)
 
   assignment_map = collections.OrderedDict()
-  for x in init_vars:
+  for i, x in enumerate(init_vars):
     (name, var) = (x[0], x[1])
+    name = name.split('/adam_')[0]
     if name not in name_to_variable:
       print(f'Could not find {name}. Skipping...')
       continue

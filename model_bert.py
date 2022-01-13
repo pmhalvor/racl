@@ -19,7 +19,6 @@ class MODEL(object):
     def __init__(self, opt):
         with tf.name_scope('parameters'):
             self.opt = opt
-            self.Winit = tf.random_uniform_initializer(minval=-0.01, maxval=0.01, seed=0.05)
 
             info = ''
             for arg in vars(opt):
@@ -42,9 +41,24 @@ class MODEL(object):
 
             if self.opt.task == 'norec_fine':
                 # load norwegian bert
-                self.bert_config = bert_modeling.BertConfig.from_json_file(LOCAL+"/../andreku/norbert20/config.json")
+                self.bert_config = bert_modeling.BertConfig.from_json_file(LOCAL+"/norbert/bert_config.json")
             else:
                 self.bert_config = bert_modeling.BertConfig.from_json_file(LOCAL+"/bert-large/bert_config.json")
+
+            # NOTE added by pmhalvor
+            self.config_dict = self.bert_config.to_dict()
+            if 'initializer_range' in self.config_dict:
+                self.Winit = tf.random_uniform_initializer(
+                    minval=-self.config_dict['initializer_range']/2, 
+                    maxval=self.config_dict['initializer_range']/2, 
+                    seed=0.05
+                )
+            else:
+                self.Winit = tf.random_uniform_initializer(
+                    minval=-0.01,  
+                    maxval=0.01, 
+                    seed=0.05
+                )
 
         with tf.name_scope('inputs'):
             self.aspect_y = tf.placeholder(tf.int32, [None, self.opt.max_sentence_len, self.opt.class_num], name='aspect_y')
@@ -124,7 +138,7 @@ class MODEL(object):
                 opinion_propagate = tf.tile(tf.expand_dims(confidence, 1), [1, self.opt.max_sentence_len, 1]) * mask70 * position_att
 
                 # SC Convolution
-                context_conv = tf.layers.conv1d(context_input[-1], self.opt.emb_dim, self.opt.kernel_size, padding='SAME', activation=tf.nn.relu, name='context_conv')
+                context_conv = tf.layers.conv1d(context_input[-1], self.config_dict.get('hidden_size'), self.opt.kernel_size, padding='SAME', activation=tf.nn.relu, name='context_conv')
 
                 # SC Aspect-Context Attention
                 word_see_context = tf.matmul((query[-1]), tf.nn.l2_normalize(context_conv, -1), adjoint_b=True)  * position_att
@@ -159,6 +173,7 @@ class MODEL(object):
         sentiment_prob = tf.reduce_mean(tf.concat(senti_prob_list, -1), -1)
 
         return aspect_prob, opinion_prob, sentiment_prob
+
 
     def run(self):
         batch_size = tf.shape(self.word_mask)[0]
@@ -209,8 +224,10 @@ class MODEL(object):
             mine_lr = self.opt.learning_rate
             mine_lr = tf.train.exponential_decay(mine_lr, global_step, decay_steps=self.decay_step, decay_rate=0.95, staircase=True)
 
-            bert_vars = tv[:391]
-            mine_vars = tv[391:]
+            bert_cap = 391 if self.config_dict.get('hidden_size') == 1024 else 199  # else assumes hidden_layers = 768
+
+            bert_vars = tv[:bert_cap]
+            mine_vars = tv[bert_cap:]
 
             bert_opt = bert_optimization.AdamWeightDecayOptimizer(learning_rate=bert_lr)
             mine_opt = tf.train.AdamOptimizer(mine_lr)
@@ -218,12 +235,13 @@ class MODEL(object):
             grads = tf.gradients(cost, bert_vars + mine_vars)
             (grads, _) = tf.clip_by_global_norm(grads, clip_norm=1.0)
 
-            bert_grads = grads[:391]
-            mine_grads = grads[391:]
+            bert_grads = grads[:bert_cap]
+            mine_grads = grads[bert_cap:]
 
             # mine_grads = tf.gradients(cost, mine_vars)
             print(f'bert_grads:{len(bert_grads)} \t bert_vars:{len(bert_vars)}')
             print(f'mine_grads:{len(mine_grads)} \t mine_vars:{len(mine_vars)}')
+            # quit()
             # TODO should be 48 and 48. norbert gives 0 and 0
 
             bert_op = bert_opt.apply_gradients(zip(bert_grads, bert_vars))
@@ -246,9 +264,7 @@ class MODEL(object):
             saver = tf.train.Saver(max_to_keep=120)
             # gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
             if self.opt.task == 'norec_fine':
-                # model_path = LOCAL + "models/nb-bert-large/tf_model.h5"
-                # TODO FIXME HELP 
-                init_checkpoint = LOCAL + "/../andreku/norbert20/model.ckpt"  # TODO check .h5 file-load works 
+                init_checkpoint = LOCAL + "/norbert/bert_model.ckpt" 
             else:
                 init_checkpoint = LOCAL + "/bert-large/bert_model.ckpt"
             use_tpu = False
@@ -395,6 +411,7 @@ class MODEL(object):
                   .format(aspect_f1_list[min_dev_index], opinion_f1_list[min_dev_index],
                           sentiment_acc_list[min_dev_index],
                           sentiment_f1_list[min_dev_index], ABSA_f1_list[min_dev_index]))
+
 
     def get_batch_data(self, dataset, batch_size, keep_prob1, keep_prob2, is_training=False, is_shuffle=False):
         length = len(dataset[0])

@@ -124,6 +124,9 @@ def read_bert_data(fname, max_length, is_testing=False):
         split_oe_labels = []
         split_sa_labels = []
 
+        if len(raw_tokens) > 150:
+            continue  # skip very large sentences
+
         for ix, raw_token in enumerate(raw_tokens):
             raw_token = raw_token.lower()
             sub_tokens= tokenizer.tokenize(raw_token)
@@ -143,7 +146,7 @@ def read_bert_data(fname, max_length, is_testing=False):
                 split_sa_labels.append(sa_labels[ix])
 
         if len(split_tokens) > max_length - 2:
-            print('Over Length')
+            print(f'Over Length: split_tokens:{len(split_tokens)} \t max_length:{max_length}')
             raise ValueError
 
         source_mask.append([1.] * len(split_tokens) + [0.] * (max_length - len(split_tokens)))
