@@ -124,7 +124,7 @@ def read_bert_data(fname, max_length, is_testing=False):
         split_oe_labels = []
         split_sa_labels = []
 
-        if len(raw_tokens) > 150:
+        if len(raw_tokens) > 100:
             continue  # skip very large sentences
 
         for ix, raw_token in enumerate(raw_tokens):
