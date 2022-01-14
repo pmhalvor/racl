@@ -3,7 +3,7 @@
 #SBATCH --job-name=pmhalvor/fgsa
 #SBATCH --account=nn9851k
 #SBATCH --mail-type=FAIL
-#SBATCH --time=00:05:00
+#SBATCH --time=10:05:00
 #SBATCH --nodes=1
 #SBATCH --mem-per-cpu=10G
 #SBATCH --ntasks-per-node=2
