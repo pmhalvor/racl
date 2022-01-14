@@ -1,3 +1,4 @@
 # hide files/ folders
 old-slurms/
 slurm-*
+__pycache__/

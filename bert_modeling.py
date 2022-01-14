@@ -403,6 +403,9 @@ def embedding_lookup(input_ids,
     one_hot_input_ids = tf.one_hot(flat_input_ids, depth=vocab_size)
     output = tf.matmul(one_hot_input_ids, embedding_table)
   else:
+    # FIXME failing due to index error. input_ids has 30108 which > 30101
+    unk = input_ids*0+100  # unknown id token is 100 FIXME make applicaple for all runs
+    input_ids = tf.where(tf.less(input_ids, 30101), input_ids, unk)
     output = tf.nn.embedding_lookup(embedding_table, input_ids)
 
   input_shape = get_shape_list(input_ids)

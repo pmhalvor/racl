@@ -309,6 +309,9 @@ class WordpieceTokenizer(object):
     self.inv_vocab = {v: k for k, v in self.vocab.items()}
     self.unk_token = unk_token
     self.max_input_chars_per_word = max_input_chars_per_word
+    # print(f"Unknown token: {self.unk_token}")
+    # print(f"Unknown id: {self.vocab[self.unk_token]}")
+    # quit()  # token: [UNK]    id: 100
 
   def tokenize(self, text):
     """Tokenizes a piece of text into its word pieces.
