@@ -136,11 +136,16 @@ def load_vocab(vocab_file):
 def convert_by_vocab(vocab, items):
   """Converts a sequence of [tokens|ids] using the vocab."""
   output = []
+  # print("Length vocab: ", len(vocab))
+  # print(type(vocab))
+  # print("Length items: ", len(items))
+  # print(type(items))
+  # quit()  # TODO FIXME NOTE remove when norbert loading works
   for item in items:
     try:
         output.append(vocab[item])
     except KeyError:
-        output.append(0)
+        output.append(0)  # TODO check why this index is 0 and not 100 when vocab['[PAD]'] == 0 
        # print(item)
   return output
 

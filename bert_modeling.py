@@ -111,7 +111,7 @@ class BertModel(object):
   input_mask = tf.constant([[1, 1, 1], [1, 1, 0]])
   token_type_ids = tf.constant([[0, 0, 1], [0, 2, 0]])
   config = modeling.BertConfig(vocab_size=32000, hidden_size=512,
-    num_hidden_layers=8, num_attention_heads=6, intermediate_size=768) # NOTE changed from 1024
+    num_hidden_layers=8, num_attention_heads=6, intermediate_size=1024) 
   model = modeling.BertModel(config=config, is_training=True,
     input_ids=input_ids, input_mask=input_mask, token_type_ids=token_type_ids)
   label_embeddings = tf.get_variable(...)
@@ -404,8 +404,8 @@ def embedding_lookup(input_ids,
     output = tf.matmul(one_hot_input_ids, embedding_table)
   else:
     # FIXME failing due to index error. input_ids has 30108 which > 30101
-    unk = input_ids*0+100  # unknown id token is 100 FIXME make applicaple for all runs
-    input_ids = tf.where(tf.less(input_ids, 30101), input_ids, unk)
+    # unk = input_ids*0+100  # unknown id token is 100 FIXME make applicaple for all runs TODO NOTE pmhalvor
+    # input_ids = tf.where(tf.less(input_ids, 30101), input_ids, unk)
     output = tf.nn.embedding_lookup(embedding_table, input_ids)
 
   input_shape = get_shape_list(input_ids)
