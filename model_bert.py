@@ -203,8 +203,8 @@ class MODEL(object):
 
         with tf.name_scope('loss'):
             tv = tf.trainable_variables()
-            for idx, v in enumerate(tv):
-                print('para {}/{}'.format(idx, len(tv)), v)
+            # for idx, v in enumerate(tv):
+            #     print('para {}/{}'.format(idx, len(tv)), v)
             total_para = count_parameter()
             self.logger.info('>>> total parameter: {}'.format(total_para))
 
