@@ -239,9 +239,9 @@ class MODEL(object):
             mine_grads = grads[bert_cap:]
 
             # mine_grads = tf.gradients(cost, mine_vars)
-            # NOTE prints added by pmhalvor
-            print(f'bert_grads:{len(bert_grads)} \t bert_vars:{len(bert_vars)}')
-            print(f'mine_grads:{len(mine_grads)} \t mine_vars:{len(mine_vars)}')
+            # # NOTE prints added by pmhalvor
+            # print(f'bert_grads:{len(bert_grads)} \t bert_vars:{len(bert_vars)}')
+            # print(f'mine_grads:{len(mine_grads)} \t mine_vars:{len(mine_vars)}')
 
             bert_op = bert_opt.apply_gradients(zip(bert_grads, bert_vars))
             mine_op = mine_opt.apply_gradients(zip(mine_grads, mine_vars), global_step=global_step)
@@ -269,7 +269,7 @@ class MODEL(object):
             use_tpu = False
             tvars = tf.trainable_variables()
             (assignment_map, initialized_variable_names) = bert_modeling.get_assignment_map_from_checkpoint(tvars, init_checkpoint)
-            print(initialized_variable_names)
+            # print(initialized_variable_names)
             tf.train.init_from_checkpoint(init_checkpoint, assignment_map)
 
 
