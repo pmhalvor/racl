@@ -12,7 +12,7 @@ from tqdm import tqdm
 import bert_optimization
 
 
-LOCAL = "/cluster/projects/nn9851k/pmhalvor"
+LOCAL = "/fp/homes01/u01/ec-pmhalvor/nlp/msc"
 
 class MODEL(object):
 

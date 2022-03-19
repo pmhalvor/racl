@@ -4,7 +4,7 @@ import tensorflow as tf
 from tensorflow.python.keras import backend as K
 import bert_tokenization
 
-LOCAL = "/cluster/projects/nn9851k/pmhalvor"
+LOCAL = "/fp/homes01/u01/ec-pmhalvor/nlp/msc"
 
 def read_data(fname, source_word2idx, max_length, is_testing=False):
     source_data, aspect_y, opinion_y, source_mask, sentiment_y = list(), list(), list(), list(), list()
